@@ -14,6 +14,7 @@
 			<input name="guessingGame" type="submit" value="Guessing Game" />
 			<input name="login" type="submit" value="Login" />
 			<input name="reviewPage" type="submit" value="Write A Review" />
+			<input name="ReadAReview" type="submit" value="Review Page" />
 		</form>
 	</body>
 </html>
