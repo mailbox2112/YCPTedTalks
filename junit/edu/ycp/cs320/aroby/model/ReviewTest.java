@@ -18,9 +18,9 @@ public class ReviewTest {
 		model2 = new Review();
 		model3 = new Review();
 		
-		model1.setReview("clocke3", "bab", "Bees", "They're dying.", "I really liked it.", "https://drive.google.com/drive/u/1/my-drive");
-		model2.setReview("aroby", "cab", "Trims", "I need one.", "I can do it by myself.", "http://www.sqlcourse2.com/having.html");
-		model3.setReview("tclrk", "dab", "Sustainability", "We need it.", "I'm interested in it.", "http://www.w3schools.com/html/html_examples.asp");
+		model1.setReview("clocke3", "bab", "Bees", "They're dying.", "I really liked it.", "https://drive.google.com/drive/u/1/my-drive", "I hate it", 2);
+		model2.setReview("aroby", "cab", "Trims", "I need one.", "I can do it by myself.", "http://www.sqlcourse2.com/having.html", "10/10 would recommend",5);
+		model3.setReview("tclrk", "dab", "Sustainability", "We need it.", "I'm interested in it.", "http://www.w3schools.com/html/html_examples.asp","I think the info was lacking", 3);
 	}
 	
 	@Test
@@ -64,4 +64,19 @@ public class ReviewTest {
 		assertEquals("http://www.sqlcourse2.com/having.html", model2.getLink());
 		assertEquals("http://www.w3schools.com/html/html_examples.asp", model3.getLink());
 	}
+	
+	@Test
+	public void test_getRecommendation(){
+		assertEquals("I hate it", model1.getRecommendation());
+		assertEquals("10/10 would recommend", model2.getRecommendation());
+		assertEquals("http://www.w3schools.com/html/html_examples.asp", model3.getRecommendation());
+	}
+
+	@Test
+	public void test_getRating(){
+		assertTrue(model1.getRating() == 2);
+		assertTrue(model2.getRating() == 5);
+		assertTrue(model3.getRating() == 3);
+	}
 }
+

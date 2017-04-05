@@ -12,7 +12,7 @@ public class AccountController {
 	public Account getModel() {
 		return model;
 	}
-	
+
 	public void createAccount(Account model) {
 		// TODO: add account to the database!
 	}

@@ -1,19 +1,24 @@
 package edu.ycp.cs320.aroby.model;
 
-import java.net.URL;
-import java.sql.Time;
+import java.time.ZonedDateTime;
 
 public class Review {
-	private String name, author, topic, review, descript, link;
-	private Time date;
+	private String name, author, topic, review, descript, link, recommendation;
+	private int rating;
+	private ZonedDateTime date;
 	
-	public void setReview(String name, String author, String topic, String descript, String review, String link) {
+	public void setReview(String name, String author, String topic, String descript, String review, String link, String recommendation, int rating) {
 		this.topic = topic;
 		this.review = review;
 		this.descript = descript;
 		this.name = name;
 		this.author = author;
 		this.link = link;
+		this.rating = rating;
+	}
+	
+	public void setTime (ZonedDateTime date){
+		date = ZonedDateTime.now();
 	}
 	
 	public String getAuthor(){
@@ -39,7 +44,15 @@ public class Review {
 		return link;
 	}
 	
-	public Time getDate(){
+	public String getRecommendation(){
+		return recommendation;
+	}
+	
+	public int getRating(){
+		return rating;
+	}
+	
+	public ZonedDateTime getDate(){
 		return date;
 	}
 }

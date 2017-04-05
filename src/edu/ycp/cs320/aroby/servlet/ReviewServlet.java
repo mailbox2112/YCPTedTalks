@@ -25,37 +25,32 @@ public class ReviewServlet extends HttpServlet {
 			throws ServletException, IOException {
 		Review model = new Review();
 		ReviewController controller = new ReviewController();
+		int rating;
 
-		model.setReview(model.getTopic(), model.getName(), model.getAuthor(), model.getReview(), model.getDescription(), model.getLink());
-		
-		controller.setModel(model);
-		String errorMessage = null;
-		try{
 			String name = req.getParameter("name");
 			String author = req.getParameter("author");
 			String description = req.getParameter("descript");
 			String topic = req.getParameter("topic");
 			String review = req.getParameter("review");
 			String link = req.getParameter("link");
+			String recommendations = req.getParameter("recommendations");
+			String rating_string = req.getParameter("rating");
+			if(rating_string != "" & rating_string != null){
+				rating = Integer.parseInt(rating_string);
+				model.setReview(name, author, topic, description, review, link, recommendations, rating);
+			}
+			controller.setModel(model);
+			String errorMessage = null;
 			
-			if(name == "" || author == "" || description == "" || topic == "" || review == ""  || link == ""){
+			if(name == "" || author == "" || description == "" || topic == "" || review == ""  || link == "" || rating_string == ""){
+				req.setAttribute("model", model);
+				req.getRequestDispatcher("/_view/reviewPage.jsp").forward(req, resp);
 				errorMessage = "Complete all required fields";
 			}
 			else{
 				controller.isDone();
 				System.out.print("Your review was submitted");
-			}
-		}
-		catch(NullPointerException e){
-			errorMessage = "Found a parameter with a null pointer.";
-		}
-		req.setAttribute("Review", controller);
-		
-		req.getRequestDispatcher("/_view/reviewPage.jsp").forward(req, resp);
-		
+				resp.sendRedirect("/aroby/readPage");
+			}	
 	}
-
-	//private int getInteger(HttpServletRequest req, String name) {
-		//return Integer.parseInt(req.getParameter(name));
-	//}
 }
