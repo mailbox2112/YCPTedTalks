@@ -534,9 +534,6 @@ public class DerbyDatabase implements IDatabase {
 		});
 	}
 	
-	public void createNewAccount(){
-		
-	}
 	
 	public void insertNewTedTalk(){
 
@@ -996,44 +993,58 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 
-	public void createNewStudent() {
+
+	public Account findAccountbyLastName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Student findStudentbyId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Student findStudentbyLastName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Review findReviewbyAuthor(String author) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Review findReviewbyTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Review findReviewbyTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Topic findTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void createNewAccount(String email, String password, String firstName, String lastName, boolean admin) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	public Account findAccount() {
+	public void createNewStudent(String email, String password, String firstName, String lastName, boolean admin,
+			int id, String major) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Student findStudent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyAuthor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyTopic() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Topic findTopic() {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 }

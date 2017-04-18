@@ -227,11 +227,6 @@ public class FakeDatabase implements IDatabase {
 		return result;
 	}
 
-	public void createNewAccount() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void insertNewTedTalk() {
 		// TODO Auto-generated method stub
 		
@@ -252,38 +247,70 @@ public class FakeDatabase implements IDatabase {
 		
 	}
 
-	public void createNewStudent() {
+	public List<Review> findReviewsbyTitle(String title) {
+		// TODO Auto-generated method stub
+		List<Review> review = new ArrayList<Review>();
+		List<Review> result = new ArrayList<Review>();
+		for (TedTalk t : tedtalkList) {
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			
+			if (t.getTitle().contains(title)) {
+				review = t.getReview();
+				for(int i = 0; i<review.size(); i++){
+					result.add(review.get(i));
+				}
+			}
+		}
+		return result;
+		
+	}
+		
+	public Account findAccountbyEmail(String email) {
+		// TODO Auto-generated method stub
+		Account account = null;
+		for (Account a : accountList) {
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			
+			if (a.getEmail() == email) {
+				account = a;
+			}
+		}
+		return account;
+	}
+
+	public Student findStudentbyId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Student findStudentbyLastName(String lastname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Review> findReviewsbyAuthor(String author) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Review> findReviewsbyTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Topic findTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void createNewAccount(String email, String password, String firstName, String lastName, boolean admin) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public Account findAccount() {
+	public void createNewStudent(String email, String password, String firstName, String lastName, boolean admin,
+			int id, String major) {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Student findStudent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Review findReviewbyAuthor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Review findReviewbyTopic() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Review findReviewbyTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Topic findTopic() {
-		// TODO Auto-generated method stub
-		return null;
+		
 	}
 }
