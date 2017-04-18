@@ -31,10 +31,13 @@
   	<servlet-class>edu.ycp.cs320.aroby.servlet.CreateAccountServlet</servlet-class>
   </servlet>
   <servlet>
-  <servlet-name>ReadAReviewServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.aroby.servlet.ReadAReviewServlet</servlet-class>
+  <servlet-name>SearchServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.aroby.servlet.SearchServlet</servlet-class>
   </servlet>
-  
+  <servlet>
+  <servlet-name>TedTalkServlet</servlet-name>
+  	<servlet-class>edu.ycp.cs320.aroby.servlet.TedTalkServlet</servlet-class>
+  </servlet>
 	<!-- Ajax Servlets -->
   <servlet>
     <servlet-name>AddNumbersAjaxServlet</servlet-name>
@@ -46,9 +49,6 @@
   </servlet><servlet>
     <servlet-name>NextGuessAjaxServlet</servlet-name>
     <servlet-class>edu.ycp.cs320.aroby.servlet.ajax.NextGuessAjaxServlet</servlet-class>
-  </servlet><servlet>
-  	<servlet-name>ReadAReviewAjaxServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.aroby.servlet.ajax.ReadAReviewAjaxServlet</servlet-class>
   </servlet>
 
   <!-- Servlet mappings -->
@@ -73,9 +73,13 @@
   	<servlet-name>ReviewServlet</servlet-name>
   	<url-pattern>/reviewPage</url-pattern>
    </servlet-mapping><servlet-mapping>
-  	<servlet-name>ReadAReviewServlet</servlet-name>
-  	<url-pattern>/readPage</url-pattern>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<url-pattern>/searchPage</url-pattern>
    </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>TedTalkServlet</servlet-name>
+    <url-pattern>/tedTalkPage</url-pattern>
+  </servlet-mapping>
   
   
     <servlet-mapping>
@@ -98,6 +102,19 @@
   <servlet-mapping>
   	<servlet-name>CreateAccountServlet</servlet-name>
   	<url-pattern>/createAccount</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SearchServlet</servlet-name>
+  	<url-pattern>/searchPage</url-pattern>
+  </servlet-mapping>
+  <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+  <servlet-mapping>
+  	<servlet-name>TedTalkServlet</servlet-name>
+  	<url-pattern>/tedTalkPage</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
       <welcome-file>index.html</welcome-file>

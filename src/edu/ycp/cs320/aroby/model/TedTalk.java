@@ -5,35 +5,62 @@ import java.util.ArrayList;
 
 public class TedTalk {
 	private URL link;
-	private String title, author, topic, descript;
+	private int tedTalk_id, speaker_id, topic_id;
+	private String title, description;
 	private ArrayList<Review> review = new ArrayList<Review>();
-	
-	public void setTedTalk(ArrayList<Review> review, String title, String author, String topic, String descript, URL link){
-		this.review = review;
-		this.title = title;
-		this.author = author;
-		this.topic = topic;
-		this.descript = descript;
-		this.link = link;
-	}
-	
-	public Review getReview(int index){
-		Review review1 = review.get(index);
-		return review1;
-	}
-	public String getTitle(){
-		return title;
-	}
-	public String getAuthor(){
-		return author;
-	}
-	public String getDescript(){
-		return descript;
-	}
-	public URL getLink(){
+
+	public URL getLink() {
 		return link;
 	}
-	public String getTopic(){
-		return topic;
+	public void setLink(URL link) {
+		this.link = link;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public ArrayList<Review> getReview() {
+		return review;
+	}
+	
+	public void setReview(ArrayList<Review> review) {
+		this.review = review;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+	
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	public int getTedTalkId() {
+		return tedTalk_id;
+	}
+
+	public void setTedTalkId(int tedTalk_id) {
+		this.tedTalk_id = tedTalk_id;
+	}
+	
+	public int getTopicId() {
+		return topic_id;
+	}
+	
+	public void setTopicId(int topic_id) {
+		this.topic_id = topic_id;
+	}
+	
+	public int getSpeakerId() {
+		return speaker_id;
+	}
+	
+	public void setSpeakerId(int speaker_id) {
+		this.speaker_id = speaker_id;
 	}
 }

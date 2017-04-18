@@ -37,10 +37,11 @@ public class LoginServlet extends HttpServlet {
 		controller.setModel(model);
 		
 		// TODO: Session information
+		// TODO: Modify servlet/jsp to use firstname/lastname instead ofjust name
 		if (controller.checkEmail() == true && controller.checkPassword() == true) {
 			HttpSession session =  req.getSession(true);
 			session.setAttribute("login", true);
-			session.setAttribute("name", model.getName());
+			session.setAttribute("name", model.getFirstName());
 			if(session.getAttribute("login_failure") != null) {
 				session.removeAttribute("login_failure");
 			}

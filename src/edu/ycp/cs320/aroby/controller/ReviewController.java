@@ -2,9 +2,7 @@ package edu.ycp.cs320.aroby.controller;
 
 import edu.ycp.cs320.aroby.model.Review;
 
-/**
- * Controller for the guessing game.
- */
+// TODO: Fix this!
 public class ReviewController {
 	private Review model;
 
@@ -18,18 +16,19 @@ public class ReviewController {
 	}
 	
 	public Review getReview(){
-		model.setReview(model.getName(),model.getAuthor(), model.getTopic(), model.getDescription(), model.getReview(), model.getLink(), model.getRecommendation(), model.getRating());
-		model.getDate();
+		//model.setReview(model.getName(),model.getAuthor(), model.getTopic(), model.getDescription(), model.getReview(), model.getLink(), model.getRecommendation(), model.getRating());
+		//model.getDate();
 		return model;
 	}
 	
 	public boolean isDone(){
 		//if all the forms are filled out
-		if(model.getReview() != null || model.getDescription() != null|| model.getTopic() != null ||  model.getName() != null ||  model.getAuthor() != null ||  model.getLink() != null || model.getRecommendation() != null || model.getRating() > 0){
+		/*if(model.getReview() != null || model.getDescription() != null|| model.getTopic() != null ||  model.getName() != null ||  model.getAuthor() != null ||  model.getLink() != null || model.getRecommendation() != null || model.getRating() > 0){
 			return true;
 		}
 		else{
 			return false;
-		}
+		}*/
+		return true;
 	}
 }

@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+body{
+	background-color: white;
+	text-align: left;
+	font-family: Helvetica;
+	font-size: 20px;
+	font-weight: 700px;
+}
+
+p{
+	font-size: 22px;
+	color: #E62B1E;
+}
+	
+input{
+	width: 300px;
+
+  	/*give same size to all text fields */
+  	width: 150px;
+  	box-sizing: border-box;
+
+  	/* make all text boxes appear the same */
+ 	border: 2px solid #E62B1E;
+ 	font-size: 16px;
+ 	font-family: Helvetica Neue;
+}
+
+input[type=submit]{
+    background-color: white; 
+    color: black; 
+    border: 2px solid #E62B1E;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* for Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+	background-color: #E62B1E;
+    color: white;
+}

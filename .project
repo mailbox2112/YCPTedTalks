@@ -3,6 +3,8 @@
 	<name>CS320_aroby</name>
 	<comment></comment>
 	<projects>
+		<project>CS320_Derby</project>
+		<project>CS320_Jetty</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

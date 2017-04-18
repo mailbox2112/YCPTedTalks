@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="reviewPage.css">
 	</head>
 	<body>
+	<c:if test="${! empty errorMessage}">
+			<div class="error">${errorMessage}</div>
+		</c:if>
 		<form id="reviewForm" name="reviewForm" action="${pageContext.servletContext.contextPath}/reviewPage" method="post">
 			<div class="Name">
 				<label for="name">Name</label><br>

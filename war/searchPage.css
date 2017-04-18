@@ -1,0 +1,47 @@
+@CHARSET "UTF-8";
+input[type=text]{
+	box-sizing: border-box;
+	border: 2px solid #E62B1E;
+	height: 32px;
+ 	font-size: 16px;
+ 	font-family: Helvetica Neue;
+}
+		
+input[type=submit]{
+    background-color: white; 
+    color: black; 
+   	border: 2px solid #E62B1E;
+   	padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* for Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+ 	font-family: Helvetica Neue;
+}
+
+input[type=submit]:hover{
+	background-color: #E62B1E;
+   	color: white;
+}
+	
+body{
+	text-align: center;
+}
+		
+select{
+    background-color: #E62B1E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+	border: 2px solid #E62B1E;
+    cursor: pointer;
+}
+
+select:hover, select:focus {
+    background-color: #E62B1E;
+}
+

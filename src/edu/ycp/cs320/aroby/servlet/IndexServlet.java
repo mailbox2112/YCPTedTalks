@@ -25,14 +25,14 @@ public class IndexServlet extends HttpServlet {
 			resp.sendRedirect("/aroby/login");
 		} else if(req.getParameter("reviewPage") != null) {
 			resp.sendRedirect("/aroby/reviewPage");
-		} else if(req.getParameter("readPage") != null) {
-			resp.sendRedirect("/aroby/readPage");
 		} else if(req.getParameter("logout") != null) {
 			HttpSession session = req.getSession(true);
 			session.invalidate();
 			resp.sendRedirect("/aroby/index");
 		} else if(req.getParameter("createAccount") != null) {
 			resp.sendRedirect("/aroby/createAccount");
+		} else if(req.getParameter("searchPage") != null) {
+			resp.sendRedirect("/aroby/searchPage");
 		}
 	}
 }

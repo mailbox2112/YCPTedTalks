@@ -37,7 +37,7 @@ public class ReviewServlet extends HttpServlet {
 			String rating_string = req.getParameter("rating");
 			if(rating_string != "" & rating_string != null){
 				rating = Integer.parseInt(rating_string);
-				model.setReview(name, author, topic, description, review, link, recommendations, rating);
+				//model.setReview(name, author, topic, description, review, link, recommendations, rating);
 			}
 			controller.setModel(model);
 			String errorMessage = null;

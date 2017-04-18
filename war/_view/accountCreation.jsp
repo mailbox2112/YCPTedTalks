@@ -69,7 +69,7 @@
 				</tr>
 				<tr>
 					<td class="label">Student ID:</td>
-					<td><input type="text" name="student_id" size="12" value="${model.student_id}"></td>
+					<td><input type="text" name="student_id" size="12" value="${model.ycp_id}"></td>
 				</tr>
 				<tr>
 					<td class="label">Professor ID:</td>

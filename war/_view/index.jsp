@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<title>Index</title>
-		<h1> TED Talk Reviews </h1>
+		<h1> TEDTalk Reviews </h1>
 		 <link rel="stylesheet" type="text/css" href="indexPage.css">
 	</head>
 
@@ -15,12 +15,15 @@
 		<form action="${pageContext.servletContext.contextPath}/index" method="post">
 	<%Boolean login=(Boolean)session.getAttribute("login");
 		if (login != null){ %><input name="logout" type="submit" value="Logout" />
-			<input name="reviewPage" type="submit" value="Write A Review" /> <%} 
+			<input name="reviewPage" type="submit" value="Write A Review" />
+			<input name="searchPage" type="submit" value="Search"/><%} 
 		else { %>
 			<input name="login" type="submit" value="Login" />
 			<input name="createAccount" type="submit" value="Create An Account" /><%} %>
-			<input name="readPage" type="submit" value="Read A Review" />
-
 		</form>
+		<br>
+	<div class="popular_reviews">
+		<h2>Popular Ted Talks</h2>
+	</div>
 	</body>
 </html>
