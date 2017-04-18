@@ -9,6 +9,7 @@ import edu.ycp.cs320.aroby.booksdb.model.Book;
 import edu.ycp.cs320.aroby.booksdb.model.Pair;
 import edu.ycp.cs320.aroby.model.Account;
 import edu.ycp.cs320.aroby.model.Review;
+import edu.ycp.cs320.aroby.model.Speaker;
 import edu.ycp.cs320.aroby.model.Student;
 import edu.ycp.cs320.aroby.model.TedTalk;
 import edu.ycp.cs320.aroby.model.Topic;
@@ -17,12 +18,25 @@ public class FakeDatabase implements IDatabase {
 	
 	private List<Author> authorList;
 	private List<Book> bookList;
+	private List<Account> accountList;
+	private List<Review> reviewList;
+	private List<Speaker> speakerList;
+	private List<Student> studentList;
+	private List<TedTalk> tedtalkList;
+	private List<Topic> topicList;
+	
 	
 	// Fake database constructor - initializes the DB
 	// the DB only consists for a List of Authors and a List of Books
 	public FakeDatabase() {
 		authorList = new ArrayList<Author>();
 		bookList = new ArrayList<Book>();
+		accountList = new ArrayList<Account>();
+		reviewList = new ArrayList<Review>();
+		speakerList = new ArrayList<Speaker>();
+		studentList = new ArrayList<Student>();
+		tedtalkList = new ArrayList<TedTalk>();
+		topicList = new ArrayList<Topic>();
 		
 		// Add initial data
 		readInitialData();
@@ -165,18 +179,52 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	public List<TedTalk> findTedTalkbyAuthor(String search) {
-		// TODO Auto-generated method stub
-		return null;
+		Speaker speaker = null;
+		List<TedTalk> result = new ArrayList<TedTalk>();
+		for (Speaker s: speakerList){
+			if(s.getFirstname().contains(search) || s.getLastname().contains(search)){
+				speaker = s;
+			}
+		}
+		for (TedTalk t : tedtalkList) {
+			
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			if (t.getSpeakerId() == speaker.getSpeakerId()){
+				result.add(t);
+			}
+		}
+		return result;
 	}
 
 	public List<TedTalk> findTedTalkbyTopic(String search) {
-		// TODO Auto-generated method stub
-		return null;
+		List<TedTalk> result = new ArrayList<TedTalk>();
+		Topic topic = null;
+		for (Topic top : topicList){
+			if(top.getTopic() == search){
+				topic = top;
+			}
+		}
+		for (TedTalk t : tedtalkList) {
+			
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			if (t.getTopicId() == topic.getTopicId()){
+				result.add(t);
+			}
+		}
+		return result;
 	}
 
 	public List<TedTalk> findTedTalkbyTitle(String search) {
 		// TODO Auto-generated method stub
-		return null;
+		List<TedTalk> result = new ArrayList<TedTalk>();
+		for (TedTalk t : tedtalkList) {
+			System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			
+			if (t.getTitle().contains(search)) {
+				result.add(t);
+			}
+		}
+		return result;
 	}
 
 	public void createNewAccount() {
