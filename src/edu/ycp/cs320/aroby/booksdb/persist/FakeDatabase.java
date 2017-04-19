@@ -178,6 +178,7 @@ public class FakeDatabase implements IDatabase {
 		return null;
 	}
 
+
 	public List<TedTalk> findTedTalkbyAuthor(String search) {
 		Speaker speaker = null;
 		List<TedTalk> result = new ArrayList<TedTalk>();
@@ -212,9 +213,8 @@ public class FakeDatabase implements IDatabase {
 			}
 		}
 		return result;
-	}
-
-	public List<TedTalk> findTedTalkbyTitle(String search) {
+  }
+    public List<TedTalk> findTedTalkbyTitle(String search) {
 		// TODO Auto-generated method stub
 		List<TedTalk> result = new ArrayList<TedTalk>();
 		for (TedTalk t : tedtalkList) {
@@ -227,30 +227,70 @@ public class FakeDatabase implements IDatabase {
 		return result;
 	}
 
-	public List<Review> findReviewbyTitle(String title) {
+	public Boolean createNewAccount(String email, String password, String firstname, String lastname, boolean admin) {
 		// TODO Auto-generated method stub
-		List<Review> review = new ArrayList<Review>();
-		List<Review> result = new ArrayList<Review>();
-		for (TedTalk t : tedtalkList) {
-		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+  		// TODO Auto-generated method stub
+		Account account = new Account();
+		account.setAccountId(accountList.size()+1);
+		account.setAdmin(admin);
+		account.setEmail(email);
+		account.setFirstName(firstName);
+		account.setLastName(lastName);
+		account.setPassword(password);
+    int i =accountList.size();
+		accountList.add(account);
+		if (accountList.size() >i){
+      return true;
+    }
+  else{
+    return false;
+    }
+	}
+
+	public Boolean createNewStudent(int ycp_id, String major, String email) {
+			Student student = new Student();
+		student.setEmail(email);
+		student.setMajor(major);
+		student.setYCPId(ycp_id);
+    int i = studentList.size();
+		studentList.add(student);
+		if studentList.size() >i){
+      return true;
+    }
+  else{
+    return false;
+    }
+	}
+
+	public Account findAccount(String email) {
+		// TODO Auto-generated method stub
+		List<TedTalk> result = new ArrayList<TedTalk>();
+		for (TedTalk t : tedtalkList){
 			
-			if (t.getTitle().contains(title)) {
-				review = t.getReview();
-				for(int i = 0; i<review.size(); i++){
-					result.add(review.get(i));
-				}
+			if (t.getTitle().contains(search)) {
+				result.add(t);
 			}
 		}
 		return result;
-		
+	}
+
+
+
+	public Student findStudent(String email) {
+		Student student = null;
+		for(Student s : studentList){
+			if(s.getEmail == email){
+				student = s;
+			}
+		}
+		return student;
+
 	}
 		
-	public Account findAccountbyEmail(String email) {
+	public Account findAccount(String email) {
 		// TODO Auto-generated method stub
 		Account account = null;
-		for (Account a : accountList) {
-		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
-			
+		for (Account a : accountList) {			
 			if (a.getEmail() == email) {
 				account = a;
 			}
@@ -269,23 +309,38 @@ public class FakeDatabase implements IDatabase {
 		return student;
 	}
 
-	public Student findStudentbyLastName(String lastname) {
+	public Student findStudent(String email) {
 		// TODO Auto-generated method stub
 		Student student = null;
 		for(Student s : studentList){
-			if(s.getLastName() == lastname){
+			if(s.getEmail() == email){
 				student = s;
 			}
 		}
 		return student;
 	}
+    	public List<Review> findReviewbyTitle(String title) {
+		// TODO Auto-generated method stub
+		List<Review> review = new ArrayList<Review>();
+		List<Review> result = new ArrayList<Review>();
+		for (TedTalk t : tedtalkList) {
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			
+			if (t.getTitle().contains(title)) {
+				review = t.getReview();
+				for(int i = 0; i<review.size(); i++){
+					result.add(review.get(i));
+				}
+			}
+		}
+		return result;
 
-	public List<Review> findReviewbyAuthor(String lastname) {
+	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
 		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
 		int acc_id = 0;
 		for(Account acc : accountList){
-			if(acc.getLastName() == lastname){
+			if(acc.getLastName() == lastname && acc.getFirstName() == firstname){
 				acc_id = acc.getAccountId();
 			}
 		}
@@ -326,47 +381,23 @@ public class FakeDatabase implements IDatabase {
 		return result;
 	}
 
-	public Topic findTopic(TedTalk t) {
+
+	public Topic findTopic(String topic) {
 		// TODO Auto-generated method stub
-		Topic topic = null;
-		int id = t.getTopicId();
+		Topic t = null;
+		
 		for(Topic d : topicList){
-			if(d.getTopicId() == id){
-				topic = d;
+			if(d.getTopic() == topic){
+				t = d;
 			}
 		}
 		return topic;
 	}
 
-	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password) {
-		// TODO Auto-generated method stub
-		Account account = new Account();
-		account.setAccountId(account_id);
-		account.setAdmin(true);
-		account.setEmail(email);
-		account.setFirstName(firstName);
-		account.setLastName(lastName);
-		account.setPassword(password);
-		accountList.add(account);
-	}
 
-	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password, String major, int ycp_id) {
-		// TODO Auto-generated method stub
-		Student student = new Student();
-		student.setAccountId(account_id);
-		student.setAdmin(false);
-		student.setEmail(email);
-		student.setFirstName(firstName);
-		student.setLastName(lastName);
-		student.setPassword(password);
-		accountList.add(student);
-		student.setMajor(major);
-		student.setYCPId(ycp_id);
-		student.getAccountId();
-		studentList.add(student);
-	}
 
 	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url) {
+
 		// TODO Auto-generated method stub
 		TedTalk t = new TedTalk();
 		t.setDescription(description);
@@ -378,6 +409,7 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	public void insertNewSpeaker(String firstname, String lastname) {
+
 		// TODO Auto-generated method stub
 		Speaker s = new Speaker();
 		s.setFirstname(firstname);
@@ -385,7 +417,9 @@ public class FakeDatabase implements IDatabase {
 		speakerList.add(s);
 	}
 
+
 	public void insertNewTopic(String topic) {
+
 		// TODO Auto-generated method stub
 		Topic t = new Topic();
 		t.setTopic(topic);
@@ -393,6 +427,7 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	public void insertReview(int acc_id, int ted_id, int rating,String date, String review, String recommendation) {
+
 		// TODO Auto-generated method stub
 		Review r = new Review();
 		r.setRating(rating);
@@ -402,4 +437,6 @@ public class FakeDatabase implements IDatabase {
 		r.setAccountId(acc_id);
 		r.setDate(date);
 	}
+
+	
 }
