@@ -227,27 +227,7 @@ public class FakeDatabase implements IDatabase {
 		return result;
 	}
 
-	public void insertNewTedTalk() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void insertNewSpeaker() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void insertNewTopic() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void insertReview() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public List<Review> findReviewsbyTitle(String title) {
+	public List<Review> findReviewbyTitle(String title) {
 		// TODO Auto-generated method stub
 		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
@@ -280,37 +260,146 @@ public class FakeDatabase implements IDatabase {
 
 	public Student findStudentbyId(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Student student = null;
+		for(Student s : studentList){
+			if (s.getYCPId() == id){
+				student = s;
+			}
+		}
+		return student;
 	}
 
 	public Student findStudentbyLastName(String lastname) {
 		// TODO Auto-generated method stub
-		return null;
+		Student student = null;
+		for(Student s : studentList){
+			if(s.getLastName() == lastname){
+				student = s;
+			}
+		}
+		return student;
 	}
 
-	public List<Review> findReviewsbyAuthor(String author) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Review> findReviewsbyTopic(String topic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Topic findTopic(String topic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void createNewAccount(String email, String password, String firstName, String lastName, boolean admin) {
-		// TODO Auto-generated method stub
+	public List<Review> findReviewbyAuthor(String lastname) {
+		List<Review> review = new ArrayList<Review>();
+		List<Review> result = new ArrayList<Review>();
+		int acc_id = 0;
+		for(Account acc : accountList){
+			if(acc.getLastName() == lastname){
+				acc_id = acc.getAccountId();
+			}
+		}
+		for (TedTalk t : tedtalkList) {
+		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			review = t.getReview();
+			for(int i=0; i<review.size(); i++){
+				int id = review.get(i).getAccountId();
+				if (id == acc_id){
+					result.add(review.get(i));
+				}
+			}
+		}
 		
+		return result;
 	}
 
-	public void createNewStudent(String email, String password, String firstName, String lastName, boolean admin,
-			int id, String major) {
+	public List<Review> findReviewbyTopic(String topic) {
 		// TODO Auto-generated method stub
-		
+		List<Review> review = new ArrayList<Review>();
+		List<Review> result = new ArrayList<Review>();
+		int top_id = 0;
+		for(Topic t : topicList){
+			if(t.getTopic().equals(topic)){
+				top_id = t.getTopicId();
+			}
+		}
+		for(TedTalk t :tedtalkList){
+			review = t.getReview();
+			if (top_id == t.getTopicId()){
+				
+				for(int i=0;i<review.size();i++){
+					result.add(review.get(i));
+				
+				}
+			}
+		}
+		return result;
+	}
+
+	public Topic findTopic(TedTalk t) {
+		// TODO Auto-generated method stub
+		Topic topic = null;
+		int id = t.getTopicId();
+		for(Topic d : topicList){
+			if(d.getTopicId() == id){
+				topic = d;
+			}
+		}
+		return topic;
+	}
+
+	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password) {
+		// TODO Auto-generated method stub
+		Account account = new Account();
+		account.setAccountId(account_id);
+		account.setAdmin(true);
+		account.setEmail(email);
+		account.setFirstName(firstName);
+		account.setLastName(lastName);
+		account.setPassword(password);
+		accountList.add(account);
+	}
+
+	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password, String major, int ycp_id) {
+		// TODO Auto-generated method stub
+		Student student = new Student();
+		student.setAccountId(account_id);
+		student.setAdmin(false);
+		student.setEmail(email);
+		student.setFirstName(firstName);
+		student.setLastName(lastName);
+		student.setPassword(password);
+		accountList.add(student);
+		student.setMajor(major);
+		student.setYCPId(ycp_id);
+		student.getAccountId();
+		studentList.add(student);
+	}
+
+	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url) {
+		// TODO Auto-generated method stub
+		TedTalk t = new TedTalk();
+		t.setDescription(description);
+		t.setSpeakerId(speaker_id);
+		t.setTopicId(topic_id);
+		t.setTitle(title);
+		t.setLink(url);
+		tedtalkList.add(t);
+	}
+
+	public void insertNewSpeaker(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		Speaker s = new Speaker();
+		s.setFirstname(firstname);
+		s.setLastname(lastname);
+		speakerList.add(s);
+	}
+
+	public void insertNewTopic(String topic) {
+		// TODO Auto-generated method stub
+		Topic t = new Topic();
+		t.setTopic(topic);
+		topicList.add(t);
+	}
+
+	public void insertReview(int acc_id, int ted_id, int rating,String date, String review, String recommendation) {
+		// TODO Auto-generated method stub
+		Review r = new Review();
+		r.setRating(rating);
+		r.setRecommendation(recommendation);
+		r.setReview(review);
+		r.setTedTalkId(ted_id);
+		r.setAccountId(acc_id);
+		r.setDate(date);
 	}
 }

@@ -5,7 +5,7 @@ import java.time.ZonedDateTime;
 public class Review {
 	private String review, recommendation;
 	private int rating, account_id, tedTalk_id, review_id;
-	private ZonedDateTime date;
+	private String date;
 	
 	public String getRecommendation() {
 		return recommendation;
@@ -25,10 +25,10 @@ public class Review {
 	public void setReview(String review) {
 		this.review = review;
 	}
-	public ZonedDateTime getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(ZonedDateTime date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public int getTedTalkId() {

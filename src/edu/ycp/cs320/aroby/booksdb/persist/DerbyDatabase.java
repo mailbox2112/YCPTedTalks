@@ -1006,34 +1006,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 
-	public Student findStudentbyLastName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyAuthor(String author) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyTopic(String topic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Review findReviewbyTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Topic findTopic(String topic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 	public void createNewAccount(String email, String password, String firstName, String lastName, boolean admin) {
@@ -1046,5 +1019,84 @@ public class DerbyDatabase implements IDatabase {
 			int id, String major) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password,
+			String major, int ycp_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Account findAccountbyEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Student findStudentbyId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Student findStudentbyLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void insertNewSpeaker(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void insertNewTopic(String topic) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void insertReview(int acc_id, int ted_id, int rating, String date, String review, String recommendation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public List<Review> findReviewbyAuthor(String lastname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Review> findReviewbyTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Review> findReviewbyTitle(String title) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Topic findTopic(TedTalk t) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
