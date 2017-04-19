@@ -12,7 +12,7 @@ public class TedTalkController {
 
 	private TedTalk ted_talk;
 	
-	public void set_TedTalk(String title, String description, int tedTalk_id, int speaker_id, int topic_id, URL link, ArrayList<Review> review){
+	public void set_TedTalk(String title, String description, int tedTalk_id, int speaker_id, int topic_id, String link, ArrayList<Review> review){
 		ted_talk.setDescription(description);
 		ted_talk.setLink(link);
 		ted_talk.setReview(review);

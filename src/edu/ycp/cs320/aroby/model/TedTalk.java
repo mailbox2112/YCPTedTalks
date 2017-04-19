@@ -4,16 +4,16 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class TedTalk {
-	private URL link;
+	private String link;
 	private int tedTalk_id, speaker_id, topic_id;
 	private String title, description;
 	private ArrayList<Review> review = new ArrayList<Review>();
 
-	public URL getLink() {
+	public String getLink() {
 		return link;
 	}
-	public void setLink(URL link) {
-		this.link = link;
+	public void setLink(String url) {
+		this.link = url;
 	}
 
 	public String getDescription() {

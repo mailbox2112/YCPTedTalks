@@ -240,7 +240,7 @@ public class InitialData {
 				talk.setTopicId(Integer.parseInt(i.next()));
 				talk.setTitle(i.next());
 				talk.setDescription(i.next());
-				talk.setLink(new URL(i.next()));
+				talk.setLink(i.next());
 				tedTalkList.add(talk);
 			}
 			return tedTalkList;
@@ -268,7 +268,7 @@ public class InitialData {
 				review.setAccountId(Integer.parseInt(i.next()));
 				review.setTedTalkId(Integer.parseInt(i.next()));
 				review.setRating(Integer.parseInt(i.next()));
-				review.setDate(ZonedDateTime.parse(i.next()));
+				review.setDate(i.next());
 				review.setReview(i.next());
 				review.setRecommendation(i.next());
 				reviewList.add(review);

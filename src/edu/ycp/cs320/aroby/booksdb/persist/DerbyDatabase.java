@@ -1117,26 +1117,21 @@ public class DerbyDatabase implements IDatabase {
 		
 	}
 
-	public void insertNewSpeaker() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public void insertNewTopic() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void insertReview() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	public List<Review> findReviewsbyAuthor(final String firstname, final String lastname) {
 		return executeTransaction(new Transaction<List<Review>>() {
 			public List<Review> execute(Connection conn) throws SQLException {
 				PreparedStatement stmt = null;
 				ResultSet resultSet = null;
+
 
 				try {
 					// First, create a list of reviews and an author
@@ -1184,6 +1179,7 @@ public class DerbyDatabase implements IDatabase {
 				}
 			}
 		});
+
 	}
 
 	public List<Review> findReviewbyTopic(final String topic) {
@@ -1259,6 +1255,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	public List<Review> findReviewbyTitle(final String title) {
+
 		// TODO Auto-generated method stub
 		return executeTransaction(new Transaction<List<Review>>() {
 			@SuppressWarnings("resource")
@@ -1330,6 +1327,9 @@ public class DerbyDatabase implements IDatabase {
 					stmt.setString(1, topic);
 					resultSet = stmt.executeQuery();
 
+
+	public List<Review> findReviewbyTopic(String topic) {
+
 					// Load the topic info into the topic object
 					Boolean found = false;
 					while (resultSet.next()) {
@@ -1352,17 +1352,10 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	public List<TedTalk> findTedTalkbyAuthor(String search) {
+
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public List<TedTalk> findTedTalkbyTopic(String search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public List<TedTalk> findTedTalkbyTitle(String search) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
