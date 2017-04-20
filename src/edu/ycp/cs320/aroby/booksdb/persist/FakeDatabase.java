@@ -245,7 +245,7 @@ public class FakeDatabase implements IDatabase {
 		
 	}
 		
-	public Account findAccountbyEmail(String email) {
+	public Account findAccount(String email) {
 		// TODO Auto-generated method stub
 		Account account = null;
 		for (Account a : accountList) {
@@ -269,23 +269,29 @@ public class FakeDatabase implements IDatabase {
 		return student;
 	}
 
-	public Student findStudentbyLastName(String lastname) {
+	public Student findStudent(String email) {
 		// TODO Auto-generated method stub
+		int id = 0;
+		for(Account a : accountList){
+			if(a.getEmail().equals(email)){
+				id = a.getAccountId();
+			}
+		}
 		Student student = null;
 		for(Student s : studentList){
-			if(s.getLastName() == lastname){
+			if(s.getAccountId() == id){
 				student = s;
 			}
 		}
 		return student;
 	}
 
-	public List<Review> findReviewbyAuthor(String lastname) {
+	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
 		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
 		int acc_id = 0;
 		for(Account acc : accountList){
-			if(acc.getLastName() == lastname){
+			if(acc.getLastName() == lastname && acc.getFirstName() == firstname){
 				acc_id = acc.getAccountId();
 			}
 		}
@@ -326,23 +332,23 @@ public class FakeDatabase implements IDatabase {
 		return result;
 	}
 
-	public Topic findTopic(TedTalk t) {
+	public Topic findTopic(String topic) {
 		// TODO Auto-generated method stub
-		Topic topic = null;
-		int id = t.getTopicId();
+		Topic t = null;
+		
 		for(Topic d : topicList){
-			if(d.getTopicId() == id){
-				topic = d;
+			if(d.getTopic() == topic){
+				t = d;
 			}
 		}
-		return topic;
+		return t;
 	}
 
-	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password) {
+	public void createNewAccount(String email, String firstName, String lastName, String password, boolean admin) {
 		// TODO Auto-generated method stub
 		Account account = new Account();
-		account.setAccountId(account_id);
-		account.setAdmin(true);
+		account.setAccountId(accountList.size()+1);
+		account.setAdmin(admin);
 		account.setEmail(email);
 		account.setFirstName(firstName);
 		account.setLastName(lastName);
@@ -350,19 +356,12 @@ public class FakeDatabase implements IDatabase {
 		accountList.add(account);
 	}
 
-	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password, String major, int ycp_id) {
+	public void createNewStudent(String email, String major, int ycp_id) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
-		student.setAccountId(account_id);
-		student.setAdmin(false);
 		student.setEmail(email);
-		student.setFirstName(firstName);
-		student.setLastName(lastName);
-		student.setPassword(password);
-		accountList.add(student);
 		student.setMajor(major);
 		student.setYCPId(ycp_id);
-		student.getAccountId();
 		studentList.add(student);
 	}
 

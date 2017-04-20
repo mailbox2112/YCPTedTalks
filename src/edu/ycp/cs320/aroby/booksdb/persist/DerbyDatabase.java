@@ -1099,4 +1099,34 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public void createNewStudent(String email, String major, int ycp_id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Account findAccount(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Student findStudent(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public Topic findTopic(String topic) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

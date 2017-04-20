@@ -22,19 +22,19 @@ public interface IDatabase {
 	public List<Author> removeBookByTitle(String title);
 	//all above from lab 6
 	
-	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password);
-	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password, String major, int ycp_id);
-	public Account findAccountbyEmail(String email);
+	public void createNewAccount(String email, String firstName, String lastName, String password, boolean admin);
+	public void createNewStudent(String email, String major, int ycp_id);
+	public Account findAccount(String email);
 	public Student findStudentbyId(int id);
-	public Student findStudentbyLastName(String lastName);
+	public Student findStudent(String email);
 	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url);
 	public void insertNewSpeaker(String firstname, String lastname);
 	public void insertNewTopic(String topic);
 	public void insertReview(int acc_id, int ted_id, int rating, String date, String review, String recommendation);
-	public List<Review> findReviewbyAuthor(String lastname);
+	public List<Review> findReviewbyAuthor( String firstname, String lastname);
 	public List<Review> findReviewbyTopic(String topic);
 	public List<Review> findReviewbyTitle(String title);
-	public Topic findTopic(TedTalk t);
+	public Topic findTopic(String topic);
 	public List<TedTalk> findTedTalkbyAuthor(String search);
 	public List<TedTalk> findTedTalkbyTopic(String search);
 	public List<TedTalk> findTedTalkbyTitle(String search);
