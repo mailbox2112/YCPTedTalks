@@ -1,6 +1,7 @@
 package edu.ycp.cs320.aroby.booksdb.persist;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -373,11 +374,11 @@ public class FakeDatabase implements IDatabase {
 		return accountList.add(account);
 	}
 
-	public boolean createNewStudent(int acc_id, String email, String major, int ycp_id) {
+	public boolean createNewStudent(int ycp_id, String email, String major) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
 		student.setEmail(email);
-		student.setAccountId(acc_id);
+		student.setAccountId(accountList.size());
 		student.setYCPId(ycp_id);
 		student.setMajor(major);
 		return studentList.add(student);
@@ -409,7 +410,7 @@ public class FakeDatabase implements IDatabase {
 		topicList.add(t);
 	}
 
-	public void insertReview(int acc_id, int ted_id, int rating,String date, String review, String recommendation) {
+	public void insertReview(int acc_id, int ted_id, int rating, ZonedDateTime date, String review, String recommendation) {
 		// TODO Auto-generated method stub
 		Review r = new Review();
 		r.setRating(rating);

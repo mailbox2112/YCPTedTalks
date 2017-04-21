@@ -132,7 +132,7 @@ public class DerbyDatabaseTest {
 	public void FindReviewsByAuthorTest() {
 		List<Review> reviews = new ArrayList<Review>();
 		
-		reviews = db.findReviewsbyAuthor("Aaron", "Roby");
+		reviews = db.findReviewbyAuthor("Aaron", "Roby");
 		
 		if (reviews == null) {
 			fail("No reviews found!");

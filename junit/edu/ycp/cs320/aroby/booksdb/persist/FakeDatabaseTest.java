@@ -5,6 +5,7 @@ import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class FakeDatabaseTest{
 		db.createNewAccount("student2@ycp.edu", "Charles", "Xavier", "password", false);
 		Account a2 = db.findAccount(email);
 		
-		db.createNewStudent(a2.getAccountId(), "student2@ycp.edu", "ME", 901001199);
+		db.createNewStudent(901001199, "student2@ycp.edu", "ME");
 		
 		Student s = db.findStudent(email);
 		
@@ -67,7 +68,7 @@ public class FakeDatabaseTest{
 	
 	@Test
 	public void FindnInsertReviewsTest(){
-		db.insertReview(1, 2, 4, "2017-07-04T12:00:00-05:00", "abc", "abcde");
+		db.insertReview(1, 2, 4, ZonedDateTime.now(), "abc", "abcde");
 		db.insertNewTedTalk(1, 1, "title", "description", "url");
 		List<Review> r_a = new ArrayList<Review>();
 		r_a = db.findReviewbyAuthor("Aaron", "Roby");

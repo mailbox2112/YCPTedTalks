@@ -1,5 +1,6 @@
 package edu.ycp.cs320.aroby.booksdb.persist;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import edu.ycp.cs320.aroby.booksdb.model.Author;
@@ -23,15 +24,15 @@ public interface IDatabase {
 	//all above from lab 6
 	
 	public boolean createNewAccount(String email, String firstName, String lastName, String password, boolean admin);
-	public boolean createNewStudent(int acc_id, String email, String major, int ycp_id);
+	public boolean createNewStudent(int id, String email, String major);
 	public Account findAccount(String email);
 	public Student findStudentbyId(int id);
 	public Student findStudent(String email);
 	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url);
 	public void insertNewSpeaker(String firstname, String lastname);
 	public void insertNewTopic(String topic);
-	public void insertReview(int acc_id, int ted_id, int rating, String date, String review, String recommendation);
-	public List<Review> findReviewbyAuthor( String firstname, String lastname);
+	public void insertReview(int acc_id, int ted_id, int rating, ZonedDateTime date, String review, String recommendation);
+	public List<Review> findReviewbyAuthor(String firstname, String lastname);
 	public List<Review> findReviewbyTopic(String topic);
 	public List<Review> findReviewbyTitle(String title);
 	public Topic findTopic(String topic);

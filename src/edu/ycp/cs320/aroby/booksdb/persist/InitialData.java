@@ -268,7 +268,7 @@ public class InitialData {
 				review.setAccountId(Integer.parseInt(i.next()));
 				review.setTedTalkId(Integer.parseInt(i.next()));
 				review.setRating(Integer.parseInt(i.next()));
-				review.setDate(i.next());
+				review.setDate(ZonedDateTime.parse(i.next()));
 				review.setReview(i.next());
 				review.setRecommendation(i.next());
 				reviewList.add(review);

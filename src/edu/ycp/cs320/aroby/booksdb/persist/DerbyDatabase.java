@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -993,49 +994,19 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 
-
-	public Account findAccountbyLastName() {
+	public boolean createNewAccount(String email, String firstName, String lastName, String password, boolean admin) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 
-	public Student findStudentbyId() {
+	public boolean createNewStudent(int id, String email, String major) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 
-	
-
-
-	public void createNewAccount(String email, String password, String firstName, String lastName, boolean admin) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void createNewStudent(String email, String password, String firstName, String lastName, boolean admin,
-			int id, String major) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void createNewAccount(int account_id, String email, String firstName, String lastName, String password) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public void createNewStudent(int account_id, String email, String firstName, String lastName, String password,
-			String major, int ycp_id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public Account findAccountbyEmail(String email) {
+	public Account findAccount(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1047,7 +1018,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 
-	public Student findStudentbyLastName(String lastName) {
+	public Student findStudent(String email) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1070,14 +1041,7 @@ public class DerbyDatabase implements IDatabase {
 		
 	}
 
-
-	public void insertReview(int acc_id, int ted_id, int rating, String date, String review, String recommendation) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	public List<Review> findReviewbyAuthor(String lastname) {
+	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -1095,38 +1059,18 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 
-	public Topic findTopic(TedTalk t) {
+	public Topic findTopic(String topic) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 
-	public void createNewStudent(String email, String major, int ycp_id) {
+	public void insertReview(int acc_id, int ted_id, int rating, ZonedDateTime date, String review,
+			String recommendation) {
 		// TODO Auto-generated method stub
 		
 	}
 
 
-	public Account findAccount(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-
-	public Student findStudent(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Topic findTopic(String topic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
