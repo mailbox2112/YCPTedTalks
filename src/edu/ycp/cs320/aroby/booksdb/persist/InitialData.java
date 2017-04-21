@@ -188,7 +188,6 @@ public class InitialData {
 				topic.setTopic(i.next());
 				topicList.add(topic);
 			}
-			System.out.println("Loaded students from topics.csv");
 			return topicList;
 		} finally {
 			readTopics.close();
@@ -215,7 +214,6 @@ public class InitialData {
 				speaker.setLastname(i.next());
 				speakerList.add(speaker);
 			}
-			System.out.println("Loaded students from speakers.csv");
 			return speakerList;
 		} finally {
 			readSpeakers.close();
@@ -245,7 +243,6 @@ public class InitialData {
 				talk.setLink(i.next());
 				tedTalkList.add(talk);
 			}
-			System.out.println("Loaded students from tedtalks.csv");
 			return tedTalkList;
 		} finally {
 			readTedTalks.close();
@@ -276,7 +273,6 @@ public class InitialData {
 				review.setRecommendation(i.next());
 				reviewList.add(review);
 			}
-			System.out.println("Loaded students from reviews.csv");
 			return reviewList;
 		} finally {
 			readReviews.close();

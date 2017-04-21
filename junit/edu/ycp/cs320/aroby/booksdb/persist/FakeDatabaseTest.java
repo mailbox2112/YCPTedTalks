@@ -1,6 +1,7 @@
 package edu.ycp.cs320.aroby.booksdb.persist;
 
 import org.junit.Before;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -8,14 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 import edu.ycp.cs320.aroby.model.Account;
+import edu.ycp.cs320.aroby.model.Student;
 import edu.ycp.cs320.aroby.model.Review;
 import edu.ycp.cs320.aroby.model.Speaker;
 import edu.ycp.cs320.aroby.model.Topic;
 import edu.ycp.cs320.aroby.model.TedTalk;
-import edu.ycp.cs320.aroby.model.Student;
-import edu.ycp.cs320.aroby.booksdb.persist.FakeDatabase;
 
 public class FakeDatabaseTest{
 	
@@ -25,10 +24,7 @@ public class FakeDatabaseTest{
 	public void setup(){
 		DatabaseProvider.setInstance(new FakeDatabase());
 		db = DatabaseProvider.getInstance();
-		
-		
 	}
-	
 	
 	@Test
 	public void FindnInsertAccountTest(){
@@ -77,7 +73,7 @@ public class FakeDatabaseTest{
 		r_a = db.findReviewbyAuthor("Aaron", "Roby");
 		
 		
-		System.out.println(""+ r_a.size());
+		//System.out.println(""+ r_a.size());
 		assertTrue(r_a.get(1).getReview().equals("abc"));
 	}
 //	@Test
@@ -106,7 +102,9 @@ public class FakeDatabaseTest{
 	@Test
 	public void FindnInsertTedTalk(){
 		List<TedTalk> t = new ArrayList<TedTalk>();
-		
+		db.insertNewTedTalk(1, 4, "xba", "bab", "www.ted.com");
+		t = db.findTedTalkbyTitle("xba");
+		assertTrue(t.get(0).getDescription().equals("bab"));
 	}
 	@Test
 	public void FindTopic(){

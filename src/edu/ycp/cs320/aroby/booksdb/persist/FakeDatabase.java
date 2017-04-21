@@ -224,7 +224,7 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		List<TedTalk> result = new ArrayList<TedTalk>();
 		for (TedTalk t : tedtalkList) {
-			System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			//System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
 			
 			if (t.getTitle().contains(search)) {
 				result.add(t);
@@ -265,11 +265,11 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		Account account = null;
 		for (Account a : accountList) {
-			System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
+			//System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
 			
 			if (a.getEmail().equals(email)) {
 				account = a;
-				System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
+			//	System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
 			}
 		}
 		return account;
@@ -361,7 +361,7 @@ public class FakeDatabase implements IDatabase {
 		return t;
 	}
 
-	public void createNewAccount(String email, String firstName, String lastName, String password, boolean admin) {
+	public boolean createNewAccount(String email, String firstName, String lastName, String password, boolean admin) {
 		// TODO Auto-generated method stub
 		Account account = new Account();
 		account.setAccountId(accountList.size()+1);
@@ -370,17 +370,17 @@ public class FakeDatabase implements IDatabase {
 		account.setFirstName(firstName);
 		account.setLastName(lastName);
 		account.setPassword(password);
-		accountList.add(account);
+		return accountList.add(account);
 	}
 
-	public void createNewStudent(int acc_id, String email, String major, int ycp_id) {
+	public boolean createNewStudent(int acc_id, String email, String major, int ycp_id) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
 		student.setEmail(email);
 		student.setAccountId(acc_id);
 		student.setYCPId(ycp_id);
 		student.setMajor(major);
-		studentList.add(student);
+		return studentList.add(student);
 	}
 
 	public void insertNewTedTalk(int speaker_id, int topic_id, String title, String description, String url) {
