@@ -23,7 +23,7 @@ public interface IDatabase {
 	//all above from lab 6
 	
 	public void createNewAccount(String email, String firstName, String lastName, String password, boolean admin);
-	public void createNewStudent(String email, String major, int ycp_id);
+	public void createNewStudent(int acc_id, String email, String major, int ycp_id);
 	public Account findAccount(String email);
 	public Student findStudentbyId(int id);
 	public Student findStudent(String email);

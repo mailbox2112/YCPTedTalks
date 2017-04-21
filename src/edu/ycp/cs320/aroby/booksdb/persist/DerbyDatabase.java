@@ -1129,4 +1129,10 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	public void createNewStudent(int acc_id, String email, String major, int ycp_id) {
+		// TODO Auto-generated method stub
+		
+	}
 }

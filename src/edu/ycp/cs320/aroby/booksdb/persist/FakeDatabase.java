@@ -50,6 +50,12 @@ public class FakeDatabase implements IDatabase {
 		try {
 			authorList.addAll(InitialData.getAuthors());
 			bookList.addAll(InitialData.getBooks());
+			accountList.addAll(InitialData.getAccounts());
+			reviewList.addAll(InitialData.getReviews());
+			speakerList.addAll(InitialData.getSpeakers());
+			studentList.addAll(InitialData.getStudents());
+			tedtalkList.addAll(InitialData.getTedTalks());
+			topicList.addAll(InitialData.getTopics());
 		} catch (IOException e) {
 			throw new IllegalStateException("Couldn't read initial data", e);
 		}
@@ -229,15 +235,25 @@ public class FakeDatabase implements IDatabase {
 
 	public List<Review> findReviewbyTitle(String title) {
 		// TODO Auto-generated method stub
-		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
-		for (TedTalk t : tedtalkList) {
-		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
-			
-			if (t.getTitle().contains(title)) {
-				review = t.getReview();
-				for(int i = 0; i<review.size(); i++){
-					result.add(review.get(i));
+		int id = 0;
+		for(TedTalk t : tedtalkList){
+			if(t.getTitle().equals(title)) {
+				List<Review> rev = t.getReview();
+				id = t.getTedTalkId();
+				for(int i =0; i<rev.size(); i++){
+					result.add(rev.get(i));
+					}
+				}
+			}
+		for(TedTalk d : tedtalkList){
+			if(d.getTitle() == title){
+				for(Review r : reviewList){
+					if(d.getTedTalkId() == id){
+						for(int i = 0; i<d.getReview().size();i++){
+							result.add(d.getReview().get(i));
+						}
+					}
 				}
 			}
 		}
@@ -249,10 +265,11 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		Account account = null;
 		for (Account a : accountList) {
-		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
+			System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
 			
-			if (a.getEmail() == email) {
+			if (a.getEmail().equals(email)) {
 				account = a;
+				System.out.println(": " + " - " + a.getAccountId() + "/" + a.getEmail() + "/" + a.getFirstName() + "/" + a.getLastName());
 			}
 		}
 		return account;
@@ -270,39 +287,44 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	public Student findStudent(String email) {
-		// TODO Auto-generated method stub
-		int id = 0;
-		for(Account a : accountList){
+		Student st = null;
+		for(Account a: accountList){
+			
 			if(a.getEmail().equals(email)){
-				id = a.getAccountId();
+				for(Student s : studentList){
+					
+					if(a.getAccountId() == s.getAccountId()){
+						st = s;
+					}
+				
+				
+				}	
 			}
 		}
-		Student student = null;
-		for(Student s : studentList){
-			if(s.getAccountId() == id){
-				student = s;
-			}
-		}
-		return student;
+		return st;
+		
 	}
 
 	public List<Review> findReviewbyAuthor(String firstname, String lastname) {
-		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
 		int acc_id = 0;
 		for(Account acc : accountList){
-			if(acc.getLastName() == lastname && acc.getFirstName() == firstname){
+			if(acc.getLastName().equals(lastname) && acc.getFirstName().equals(firstname)){
 				acc_id = acc.getAccountId();
-			}
-		}
-		for (TedTalk t : tedtalkList) {
-		//	System.out.println(": "+ search + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId());
-			review = t.getReview();
-			for(int i=0; i<review.size(); i++){
-				int id = review.get(i).getAccountId();
-				if (id == acc_id){
-					result.add(review.get(i));
+				for(TedTalk t : tedtalkList){
+					for(int i =0;i<t.getReview().size();i++){
+						if(t.getReview().get(i).getTedTalkId() == t.getTedTalkId() && t.getReview().get(i).getAccountId() == acc.getAccountId()	) {
+							result.add(t.getReview().get(i));
+						}
+					}
 				}
+			}
+				
+		}
+		for (Review r : reviewList) {
+		//System.out.println(": "+ firstname + " - " + t.getSpeakerId() + "/" + t.getTedTalkId() + "/" + t.getTitle() + "/" + t.getTopicId() + "/" + t.getReview().get(0) + "/" + t.getReview().get(0).getRecommendation());
+			if (r.getAccountId() == acc_id){
+					result.add(r);
 			}
 		}
 		
@@ -311,22 +333,17 @@ public class FakeDatabase implements IDatabase {
 
 	public List<Review> findReviewbyTopic(String topic) {
 		// TODO Auto-generated method stub
-		List<Review> review = new ArrayList<Review>();
 		List<Review> result = new ArrayList<Review>();
-		int top_id = 0;
+		int id = 0;
 		for(Topic t : topicList){
-			if(t.getTopic().equals(topic)){
-				top_id = t.getTopicId();
-			}
-		}
-		for(TedTalk t :tedtalkList){
-			review = t.getReview();
-			if (top_id == t.getTopicId()){
-				
-				for(int i=0;i<review.size();i++){
-					result.add(review.get(i));
-				
+			if(t.getTopic().equals(topic)) {
+				id = t.getTopicId();
 				}
+			}
+				
+		for(TedTalk d : tedtalkList){
+			if(d.getTopicId() == id){
+				result.addAll(d.getReview());
 			}
 		}
 		return result;
@@ -337,7 +354,7 @@ public class FakeDatabase implements IDatabase {
 		Topic t = null;
 		
 		for(Topic d : topicList){
-			if(d.getTopic() == topic){
+			if(d.getTopic().equals(topic)){
 				t = d;
 			}
 		}
@@ -356,12 +373,13 @@ public class FakeDatabase implements IDatabase {
 		accountList.add(account);
 	}
 
-	public void createNewStudent(String email, String major, int ycp_id) {
+	public void createNewStudent(int acc_id, String email, String major, int ycp_id) {
 		// TODO Auto-generated method stub
 		Student student = new Student();
 		student.setEmail(email);
-		student.setMajor(major);
+		student.setAccountId(acc_id);
 		student.setYCPId(ycp_id);
+		student.setMajor(major);
 		studentList.add(student);
 	}
 
@@ -400,5 +418,6 @@ public class FakeDatabase implements IDatabase {
 		r.setTedTalkId(ted_id);
 		r.setAccountId(acc_id);
 		r.setDate(date);
+		reviewList.add(r);
 	}
 }
