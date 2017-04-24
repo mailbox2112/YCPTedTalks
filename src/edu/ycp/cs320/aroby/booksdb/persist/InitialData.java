@@ -240,7 +240,7 @@ public class InitialData {
 				talk.setTopicId(Integer.parseInt(i.next()));
 				talk.setTitle(i.next());
 				talk.setDescription(i.next());
-				talk.setLink(i.next());
+				talk.setLink(new URL(i.next()));
 				tedTalkList.add(talk);
 			}
 			return tedTalkList;
