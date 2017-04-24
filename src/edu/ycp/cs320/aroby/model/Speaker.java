@@ -1,13 +1,13 @@
 package edu.ycp.cs320.aroby.model;
 
 public class Speaker {
-	private int speaker_id;
+	private int speakerId;
 	private String firstname, lastname;
 	public int getSpeakerId() {
-		return speaker_id;
+		return speakerId;
 	}
 	public void setSpeakerId(int speaker_id) {
-		this.speaker_id = speaker_id;
+		this.speakerId = speaker_id;
 	}
 	public String getLastname() {
 		return lastname;
