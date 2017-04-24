@@ -2,17 +2,17 @@ package edu.ycp.cs320.aroby.model;
 
 public class Topic {
 	private String topic;
-	private int topic_id;
+	private int topicId;
 	
 	public Topic() {
 		
 	}
 	
 	public int getTopicId() {
-		return topic_id;
+		return topicId;
 	}
 	public void setTopicId(int topic_id) {
-		this.topic_id = topic_id;
+		this.topicId = topic_id;
 	}
 	
 	public String getTopic() {
