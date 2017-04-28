@@ -57,10 +57,10 @@ public class IndexServlet extends HttpServlet {
 		List<Account> accounts = new ArrayList<Account>();
 		List<TedTalk> tedTalks = new ArrayList<TedTalk>();
 		List<Topic> topics = new ArrayList<Topic>();
-		List<Speaker> speakers = new ArrayList<Speaker>();
+		List<TedTalk> upTedTalks = new ArrayList<TedTalk>();
 		List<Integer> tedTalkIds = new ArrayList<Integer>();
 		List<Integer> speakerIds = new ArrayList<Integer>();
-		List<Integer> accountIds = new ArrayList<Integer>();
+		List<Review> dates = new ArrayList<Review>();
 		
 		Search model = new Search();
 		SearchController controller = new SearchController();
@@ -78,18 +78,38 @@ public class IndexServlet extends HttpServlet {
 				tedTalkIds.add(talk.getTedTalkId());
 				tedTalks.add(talk);
 			}
-		
-		
+		}
+		for(int i=0;i<tedTalks.size(); i++){
+			ArrayList<Review> r = tedTalks.get(i).getReview();
+			for(int j=0;j<r.size();j++){
+				String day1 = r.get(j).getDate().substring(9, 10);
+				String day2  = ZonedDateTime.now().toString().substring(9, 10);
+				String month1 = r.get(j).getDate().substring(6, 7);
+				String month2 = ZonedDateTime.now().toString().substring(6, 7);
+				if(month1.equals(month2) && day1.contains(day2.subSequence(0, 1))){
+					dates.add(r.get(j));
+				}
+			}
+		}
+		for(int i=0;i<dates.size();i++){
+			for(TedTalk t : tedTalks){
+				if(dates.get(i).getTedTalkId() == t.getTedTalkId()){
+					upTedTalks.add(t);
+				}
+				if(upTedTalks.size() == 4){
+					break;
+				}
+			}
+		}
 		HttpSession session = req.getSession();
 		
 		session.setAttribute("reviews", reviews);
 		session.setAttribute("accounts", accounts);
-		session.setAttribute("tedTalks", tedTalks);
+		session.setAttribute("tedTalks", upTedTalks);
 		session.setAttribute("results", true);
 		
 							
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		
-		}
 	}
 }

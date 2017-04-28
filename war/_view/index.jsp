@@ -54,7 +54,7 @@
 	<div class="recent_reviews">
 		<h2>Recent Ted Talks Reviews</h2>
 		<c:if test="${sessionScope.results == false}">
-			<h2> nothing</h2>
+			<h2>Unable to Post</h2>
 		</c:if>
 		<c:if test="${sessionScope.results == true}">
 			<table>
