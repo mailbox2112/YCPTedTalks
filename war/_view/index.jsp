@@ -57,7 +57,8 @@
 			<h2>Unable to Post</h2>
 		</c:if>
 		<c:if test="${sessionScope.results == true}">
-			<table>
+		<h1></h1>
+		<table>
 			<c:forEach items="${sessionScope.tedTalks}" var="talk">
 				<tr>
 					<td>Title: <c:out value="${talk.title}" /><td>
@@ -80,10 +81,10 @@
 							</c:if>
 						</c:forEach>
 					</c:forEach>
-				</table>
 			</c:forEach>
+			</table>
 		</c:if>
+		</form>
 	</body>
-	</form>
 	
 </html>

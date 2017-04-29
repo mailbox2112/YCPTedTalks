@@ -30,7 +30,7 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/Index.jsp").forward(req, resp);	
+		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);	
 		
 	}
 	
@@ -62,54 +62,52 @@ public class IndexServlet extends HttpServlet {
 		List<Integer> speakerIds = new ArrayList<Integer>();
 		List<Review> dates = new ArrayList<Review>();
 		
-		Search model = new Search();
 		SearchController controller = new SearchController();
 		topics = controller.getTopics();
+		//find all reviews
 		for(int i= 0; i<topics.size(); i++){	
 			reviews.addAll(controller.findReviewsByTopic(topics.get(i).getTopic()));	
 		}
 		accounts = controller.getAccountFromReview(reviews);
+		//find the ted talks based on the review
 		for(Review review : reviews) {
 			TedTalk talk = controller.getTedTalkFromReview(review);
-			// Because the Java .contains method sucks for anything that isn't a primitive, we work around that by
-			// keeping track of the tedTalkIds instead of the actual TedTalks. Thanks, Java!
 			boolean contain = tedTalkIds.contains(talk.getTedTalkId());
+			String day1 = review.getDate().substring(8, 10);
+			String day2  = ZonedDateTime.now().toString().substring(8, 10);
+			String month1 = review.getDate().substring(5, 7);
+			String month2 = ZonedDateTime.now().toString().substring(5, 7);
+			if(Integer.getInteger(month1) == Integer.getInteger(month2) && Integer.getInteger(day1) <= Integer.getInteger(day2)){
+				dates.add(review);
+				contain = false;
+			}
+			else{
+				contain = true;
+			}
+			
 			if(!contain) {
 				tedTalkIds.add(talk.getTedTalkId());
 				tedTalks.add(talk);
 			}
 		}
-		for(int i=0;i<tedTalks.size(); i++){
-			ArrayList<Review> r = tedTalks.get(i).getReview();
-			for(int j=0;j<r.size();j++){
-				String day1 = r.get(j).getDate().substring(9, 10);
-				String day2  = ZonedDateTime.now().toString().substring(9, 10);
-				String month1 = r.get(j).getDate().substring(6, 7);
-				String month2 = ZonedDateTime.now().toString().substring(6, 7);
-				if(month1.equals(month2) && day1.contains(day2.subSequence(0, 1))){
-					dates.add(r.get(j));
+			if(tedTalks.size() > 4){
+				while(tedTalks.size() > 4){
+					tedTalks.remove(tedTalks.size()-1);
 				}
 			}
-		}
-		for(int i=0;i<dates.size();i++){
-			for(TedTalk t : tedTalks){
-				if(dates.get(i).getTedTalkId() == t.getTedTalkId()){
-					upTedTalks.add(t);
-				}
-				if(upTedTalks.size() == 4){
-					break;
-				}
+			if(tedTalks.isEmpty()){
+				
 			}
-		}
+		
+		
 		HttpSession session = req.getSession();
 		
 		session.setAttribute("reviews", reviews);
 		session.setAttribute("accounts", accounts);
-		session.setAttribute("tedTalks", upTedTalks);
+		session.setAttribute("tedTalks", tedTalks);
 		session.setAttribute("results", true);
 		
 							
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-		
+		}
 	}
-}

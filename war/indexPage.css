@@ -54,6 +54,7 @@ input[type=submit]:hover{
 	color: white;
 }
 ul {
+	font-family: Helvetica Neue;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -63,17 +64,20 @@ ul {
 
 li {
 	float: left;
+	font-family: Helvetica Neue;
 }
 
 li a {
+	font-family: Helvetica Neue;
 	display: block;
-	color: black;
+	color: white;
 	font-size: 16px;
 	text-align: center;
 	padding: 10px;
 	background-color: #E62B1E;
 }
 li b {
+	font-family: Helvetica Neue;
 	display: block;
 	color: black;
 	font-weight: bold;
@@ -88,15 +92,19 @@ li a:hover {
 	background-color: #E62B1E;
 }
 p{
+	font-family: Helvetica Neue;
 	font-size: 20px;
 	text-align: center;
 }
 table{
+	font-family: Helvetica Neue;
 	border-collapse: collapse;
 	width: 100%;
+	color: #E62B1E;
 }
-th, td{
-	
+td{
+	color: #E62B1E;
+	font-family: Helvetica Neue;
 	text-transform: capitalize;
 	text-align: left;
 	padding: 8px;
