@@ -35,15 +35,18 @@ body{
 }
 
 input[type=submit]{
-	font-family: Helvetica Neue;
-	display: block;
-	color: black;
+	background-color: #E62B1E; 
+	color: black; 
+	border: 2px solid #E62B1E;
+	padding: 6px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 	font-size: 16px;
-	text-align: right;
-	padding: 10px;
-	background-color: #E62B1E;
-	border-color: #E62B1E;
-	text-decoration: underline
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* for Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
 }
 
 input[type=submit]:hover{
