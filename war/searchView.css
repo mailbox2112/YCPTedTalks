@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+h1{
+	font-family: Helvetica Neue;
+	font-size: 70px;
+	color: #E62B1E;
+	margin: auto;
+	text-align: left;
+	padding: 20px;
+	text-decoration: underline;
+}
+a{
+	color: #E62B1E;
+	font-family: Helvetica;
+	font-size: 35px;
+	padding: 50px;;
+}
+
+a:active {
+    color: #3b81ee;
+}
+		
+select{
+    background-color: #E62B1E;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+	border: 2px solid #E62B1E;
+    cursor: pointer;
+}
+
+select:hover, select:focus {
+    background-color: #E62B1E;
+}
+
+ul{
+    	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #E62B1E;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	font-family: Helvetica Neue;
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+	background-color: #E62B1E;
+}
+li b {
+	font-family: Helvetica;
+	display: block;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+	background-color: #E62B1E;
+}
+li a:hover {
+	color: white;
+	background-color: #E62B1E;
+}
+p{
+	font-size: 20px;
+	text-align: center;
+}
