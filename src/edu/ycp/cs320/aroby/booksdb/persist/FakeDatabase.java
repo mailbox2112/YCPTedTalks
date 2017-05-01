@@ -490,4 +490,14 @@ public class FakeDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Boolean deleteTedTalk(int tedTalkId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Boolean deleteReview(int reviewId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

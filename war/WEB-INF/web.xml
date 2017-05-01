@@ -46,19 +46,12 @@
   <servlet-name>TedTalkViewServlet</servlet-name>
   <servlet-class>edu.ycp.cs320.aroby.servlet.TedTalkViewServlet</servlet-class>
   </servlet>
+  <servlet>
+  <servlet-name>LogoutServlet</servlet-name>
+  <servlet-class>edu.ycp.cs320.aroby.servlet.LogoutServlet</servlet-class>
+  </servlet>
   
-	<!-- Ajax Servlets -->
-  <servlet>
-    <servlet-name>AddNumbersAjaxServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.aroby.servlet.ajax.AddNumbersAjaxServlet</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>MultiplyNumbersAjaxServlet</servlet-name>
-  	<servlet-class>edu.ycp.cs320.aroby.servlet.ajax.MultiplyNumbersAjaxServlet</servlet-class>
-  </servlet><servlet>
-    <servlet-name>NextGuessAjaxServlet</servlet-name>
-    <servlet-class>edu.ycp.cs320.aroby.servlet.ajax.NextGuessAjaxServlet</servlet-class>
-  </servlet>
+
 
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -100,44 +93,12 @@
     <servlet-name>TedTalkViewServlet</servlet-name>
     <url-pattern>/tedTalkView</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-    <servlet-mapping>
-    <servlet-name>AddNumbersAjaxServlet</servlet-name>
-    <url-pattern>/ajax/addNumbers</url-pattern>
-  </servlet-mapping><servlet-mapping>
-  	<servlet-name>MultiplyNumbersAjaxServlet</servlet-name>
-  	<url-pattern>/ajax/multiplyNumbers</url-pattern>
-  </servlet-mapping><servlet-mapping>
-    <servlet-name>NextGuessAjaxServlet</servlet-name>
-    <url-pattern>/ajax/nextGuess</url-pattern>
-  </servlet-mapping><servlet-mapping>
-  	<servlet-name>LoginServlet</servlet-name>
-  	<url-pattern>/login</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>ReviewServlet</servlet-name>
-  	<url-pattern>/reviewPage</url-pattern>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>CreateAccountServlet</servlet-name>
-  	<url-pattern>/createAccount</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>SearchServlet</servlet-name>
-  	<url-pattern>/searchPage</url-pattern>
-  </servlet-mapping><servlet-mapping>
-  	<servlet-name>TedTalkServlet</servlet-name>
-  	<url-pattern>/tedTalkPage</url-pattern>
-  </servlet-mapping><servlet-mapping>
-  	<servlet-name>AboutServlet</servlet-name>
-  	<url-pattern>/about</url-pattern>
-  </servlet-mapping><servlet-mapping>
-  	<servlet-name>TedTalkViewServlet</servlet-name>
-  	<url-pattern>/tedTalkView</url-pattern>
-  </servlet-mapping>
+
+  
   <welcome-file-list>
       <welcome-file>index.html</welcome-file>
   </welcome-file-list>

@@ -15,7 +15,9 @@ import edu.ycp.cs320.aroby.model.TedTalk;
 import edu.ycp.cs320.aroby.model.Topic;
 import edu.ycp.cs320.aroby.controller.SearchController;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class SearchServlet extends HttpServlet{
@@ -24,15 +26,33 @@ public class SearchServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		String uri = req.getRequestURI()+"?"+req.getQueryString();
+		
+		// Parse the url
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		for (String param : uri.split("&")) {
+			String pair[] = param.split("=");
+			if (pair.length > 1) {
+				result.put(pair[0], Integer.parseInt(pair[1]));
+			} else {
+				result.put(pair[0], 0);
+			}
+		}
+		for(String val : result.keySet()) {
+			if(result.get(val) != 0) {
+				SearchController controller = new SearchController();
+				controller.deleteTedTalk(result.get(val));
+			}
+		}
+		
 		req.getRequestDispatcher("/_view/searchPage.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		
 		boolean searchError = false;
-	
-		// COmment
 		
 		Search model = new Search();
 		SearchController controller = new SearchController();

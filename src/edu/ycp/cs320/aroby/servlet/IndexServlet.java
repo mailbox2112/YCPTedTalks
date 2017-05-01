@@ -19,6 +19,7 @@ import edu.ycp.cs320.aroby.controller.SearchController;
 import edu.ycp.cs320.aroby.controller.TedTalkController;
 import edu.ycp.cs320.aroby.model.Account;
 import edu.ycp.cs320.aroby.model.Review;
+import edu.ycp.cs320.aroby.model.ReviewComparator;
 import edu.ycp.cs320.aroby.model.Search;
 import edu.ycp.cs320.aroby.model.Speaker;
 import edu.ycp.cs320.aroby.model.TedTalk;
@@ -43,8 +44,8 @@ public class IndexServlet extends HttpServlet {
 		} else if(req.getParameter("reviewPage") != null) {
 			resp.sendRedirect("/aroby/reviewPage");
 		} else if(req.getParameter("logout") != null) {
-			HttpSession session1 = req.getSession(true);
-			session1.invalidate();
+			HttpSession session = req.getSession(true);
+			session.invalidate();
 			resp.sendRedirect("/aroby/index");
 		} else if(req.getParameter("createAccount") != null) {
 			resp.sendRedirect("/aroby/createAccount");
@@ -57,39 +58,41 @@ public class IndexServlet extends HttpServlet {
 		List<Account> accounts = new ArrayList<Account>();
 		List<TedTalk> tedTalks = new ArrayList<TedTalk>();
 		List<Topic> topics = new ArrayList<Topic>();
-		List<Speaker> speakers = new ArrayList<Speaker>();
 		List<Integer> tedTalkIds = new ArrayList<Integer>();
-		List<Integer> speakerIds = new ArrayList<Integer>();
-		List<Integer> accountIds = new ArrayList<Integer>();
 		
-		Search model = new Search();
 		SearchController controller = new SearchController();
 		topics = controller.getTopics();
+		//find all reviews
 		for(int i= 0; i<topics.size(); i++){	
 			reviews.addAll(controller.findReviewsByTopic(topics.get(i).getTopic()));	
 		}
+		//sort the reviews using review comparator 
+		if(reviews.size()>1){
+			Collections.sort(reviews, new ReviewComparator());
+		}
+		// remove the reviews at the top of the list
+		if(reviews.size()>4){
+			while(reviews.size()>4){
+				reviews.remove(5);
+			}
+		}
 		accounts = controller.getAccountFromReview(reviews);
+		
+		//find the ted talks based on the review
 		for(Review review : reviews) {
 			TedTalk talk = controller.getTedTalkFromReview(review);
-			// Because the Java .contains method sucks for anything that isn't a primitive, we work around that by
-			// keeping track of the tedTalkIds instead of the actual TedTalks. Thanks, Java!
 			boolean contain = tedTalkIds.contains(talk.getTedTalkId());
 			if(!contain) {
 				tedTalkIds.add(talk.getTedTalkId());
 				tedTalks.add(talk);
 			}
-		
-		
-		HttpSession session = req.getSession();
-		
-		session.setAttribute("reviews", reviews);
-		session.setAttribute("accounts", accounts);
-		session.setAttribute("tedTalks", tedTalks);
-		session.setAttribute("results", true);
-		
-							
-		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-		
+			HttpSession session = req.getSession();
+			session.setAttribute("reviews", reviews);
+			session.setAttribute("accounts", accounts);
+			session.setAttribute("tedTalks", tedTalks);
+			session.setAttribute("results", true);						
+			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}
+
 	}
 }

@@ -14,7 +14,7 @@
 				<li><b class="navbar-brand" href="index">Ted Talk Reviews</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
-				<li><a href="createAccount">Create Account</a></li>
+				<li><a href="accountCreation">Create Account</a></li>
 				<li><a href="login">Login</a></li>
 				<li><a href="about">About</a></li> 
 			</ul>
@@ -51,6 +51,9 @@
 				<c:forEach items="${sessionScope.reviews}" var="review">
 					<tr>
 						<td>Rating: <c:out value="${review.rating}" /></td>
+						<c:if test="${sessionScope.admin == true}">
+							<td><a href="tedTalkView?delid=${review.reviewId}">Delete this review</a>
+						</c:if>
 					</tr>
 					<c:if test="${review.accountId == account.accountId}">
 						<tr>

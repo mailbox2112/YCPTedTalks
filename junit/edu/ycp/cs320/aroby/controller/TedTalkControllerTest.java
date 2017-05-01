@@ -157,7 +157,11 @@ public class TedTalkControllerTest {
 	@Test
 	public void test_getAccountfromReviews(){ //good
 		assertTrue(control1.getTedTalk() != null);
+	}
 	
+	@Test
+	public void test_exists(){
+		//assertTrue(!control1.exists());
 	}
 	
 }

@@ -79,4 +79,9 @@ public class SearchController {
 		
 		return speaker;
 	}
+	
+	public boolean deleteTedTalk(int tedTalkId) {
+		boolean result = db.deleteTedTalk(tedTalkId);
+		return result;
+	}
 }

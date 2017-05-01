@@ -41,27 +41,49 @@ public class TedTalkViewServlet extends HttpServlet {
 			}
 		}
 		
-		// Create controllers required to get the tedtalk information from the tedTalk ID above
-		// Saved info into session information
-		
-		TedTalk talk = controller.findTedTalkByID((Integer) result.values().toArray()[0]);
-		List<Review> reviews = controller.findReviewbyTitle(talk.getTitle());
-		Topic topic = controller.findTopicByID(talk.getTopicId());
-		Speaker spec = controller.findSpeakerByID(talk.getSpeakerId());
-		List<Account> accList = controller.getAccountbyReviews(reviews);
-		
-		HttpSession session = req.getSession();
-		session.setAttribute("talk", talk);
-		session.setAttribute("reviews", reviews);
-		session.setAttribute("topic", topic);
-		session.setAttribute("speaker", spec);
-		session.setAttribute("accounts", accList);
-		
-		req.getRequestDispatcher("/_view/tedTalkView.jsp").forward(req, resp);
+		for(String key : result.keySet()) {
+			if(key.contains("delid")){
+				if(result.get(key) != 0) {
+					controller.deleteReview(result.get(key));
+					resp.sendRedirect("/aroby/index");
+				}
+			} else if(key.contains("tid")) {
+				// Create controllers required to get the tedtalk information from the tedTalk ID above
+				// Saved info into session information
+				
+				TedTalk talk = controller.findTedTalkByID(result.get(key));
+				List<Review> reviews = controller.findReviewbyTitle(talk.getTitle());
+				Topic topic = controller.findTopicByID(talk.getTopicId());
+				Speaker spec = controller.findSpeakerByID(talk.getSpeakerId());
+				List<Account> accList = controller.getAccountbyReviews(reviews);
+				
+				HttpSession session = req.getSession();
+				session.setAttribute("talk", talk);
+				session.setAttribute("reviews", reviews);
+				session.setAttribute("topic", topic);
+				session.setAttribute("speaker", spec);
+				session.setAttribute("accounts", accList);
+				
+				req.getRequestDispatcher("/_view/tedTalkView.jsp").forward(req, resp);
+			}	
+		}		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		String uri = req.getRequestURI()+"?"+req.getQueryString();
+		
+		// Parse the url
+		Map<String, Integer> result = new HashMap<String, Integer>();
+		for (String param : uri.split("&")) {
+			String pair[] = param.split("=");
+			if (pair.length > 1) {
+				result.put(pair[0], Integer.parseInt(pair[1]));
+			} else {
+				result.put(pair[0], 0);
+			}
+		}
+		
 		if(req.getParameter("reviewPage") != null){
 			resp.sendRedirect("/aroby/reviewPage");
 	}

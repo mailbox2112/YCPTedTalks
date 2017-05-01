@@ -73,13 +73,7 @@ public class TedTalkServlet extends HttpServlet {
 	
 		HttpSession talk_session = req.getSession(true);
 		if(talk != null){
-			talk_session.setAttribute("title", talk.getTitle());
-			talk_session.setAttribute("description", talk.getDescription());
-			talk_session.setAttribute("url", talk.getLink());
-			talk_session.setAttribute("topicId", talk.getTopicId());
-			talk_session.setAttribute("tedTalkId", talk.getTedTalkId());
-			talk_session.setAttribute("speakerId", talk.getSpeakerId());
-			talk_session.setAttribute("talk", true);
+			talk_session.setAttribute("talk", talk);
 		}
 		
 		req.setAttribute("model", talk);

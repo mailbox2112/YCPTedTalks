@@ -121,4 +121,9 @@ public class TedTalkController {
 		}
 		return accounts;
 	}
+	
+	public boolean deleteReview(int reviewId) {
+		boolean result = db.deleteReview(reviewId);
+		return result;
+	}
 }

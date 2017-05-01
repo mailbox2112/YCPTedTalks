@@ -53,5 +53,7 @@ public interface IDatabase {
 	public Topic findTopic(String topic);
 	public Speaker findSpeaker(String firstname, String lastname);
 	public Speaker findSpeakerFromTedTalk(int speakerId);
+	public Boolean deleteTedTalk(int tedTalkId);
+	public Boolean deleteReview(int reviewId);
 
 }

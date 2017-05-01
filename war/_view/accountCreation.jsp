@@ -12,7 +12,7 @@
 		<li><b href="index">Ted Talk Reviews</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
-		<li><a href="createAccount">Create Account</a></li>
+		<li><a href="accountCreation">Create Account</a></li>
 		<li><a href="login">Login</a></li>
 		<li><a href="about">About</a></li> 
 	</ul>
@@ -20,11 +20,13 @@
 			<div class="error">${errorMessage}</div>
 		</c:if>
 		<h1>Create An Account</h1>
-		<form action="${pageContext.servletContext.contextPath}/createAccount" method="post">
-			<%if((Boolean)request.getSession().getAttribute("bad_info") != null) {%>
-				<p>Please fill out all required fields!</p><%} %>
-			<%if((Boolean)request.getSession().getAttribute("no_pw_match") != null) {%>
-				<p>Passwords do not match!</p><%} %>
+		<form action="${pageContext.servletContext.contextPath}/accountCreation" method="post">
+			<c:if test="${sessionScope.bad_info != null}">
+				<p>Please fill out all required fields!</p>
+			</c:if>
+			<c:if test="${sessionScope.no_pw_match != null}">
+				<p>Passwords do not match!</p>
+			</c:if>
 			<table>
 				<tr>
 					<td class="label">Email:</td>

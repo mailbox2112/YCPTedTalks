@@ -282,4 +282,18 @@ public class DerbyDatabaseTest {
 			fail("No speaker found.");
 		}
 	}
+	
+	@Test
+	public void DeleteTedTalkTest() {
+		TedTalk ted = db.findTedTalkByID(1);
+		boolean result = db.deleteTedTalk(1);
+		
+		TedTalk talk = db.findTedTalkByID(1);
+		
+		if (result == true) {
+			if (ted.getTitle().equals(talk.getTitle())) {
+				fail("TedTalk not deleted successfully");
+			}
+		}
+	}
 }

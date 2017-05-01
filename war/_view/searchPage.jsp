@@ -12,18 +12,30 @@
 	<c:if test="${sessionScope.error == true}">
 		<h1>Please type in your search criteria.</h1>
 	</c:if>
+	<c:if test="${sessionScope.login != true}">
 		<ul>
 		<li><b href="index">TEDTalk Reviews</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
+		<li><a href="accountCreation">Create Account</a></li>
 		<li><a href="login">Login</a></li>
 		<li><a href="about">About</a></li> 
 	</ul>
-
+	</c:if>
+	<c:if test="${sessionScope.login == true}">
+	<ul>
+		<li><b href="index">TEDTalk Reviews</b></li>
+		<li class="active"><a href="index">Home</a></li>
+		<li><a href="searchPage">Search</a></li>
+		<li><a href="logout">Logout</a></li>
+		<li><a href="about">About</a></li> 
+	</ul>
+	</c:if>
+	
 	<form action="${pageContext.servletContext.contextPath}/searchPage" method="post">
-	<h1>Search Reviews</h1>
+	<h1>Search TEDTalks</h1>
 		<select name="options" id="Type">
-			<option value="author"> Search by Author</option>
+			<option value="author"> Search by Speaker</option>
 			<option value="topic"> Search by Topic</option>
 			<option value="title">Search by Title</option>
 		</select>
