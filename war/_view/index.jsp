@@ -1,21 +1,20 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Index</title>
-		 <link rel="stylesheet" type="text/css" href="indexPage.css">
+		<link rel="stylesheet" type="text/css" href="indexPage.css">
 		 
-  			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
-		
-						<form action="${pageContext.servletContext.contextPath}/index" method="post">
+			<form action="${pageContext.servletContext.contextPath}/index" method="post">
 					<c:choose>
 						<c:when test="${sessionScope.login == true}">
 							<nav class="navbar navbar-inverse">
@@ -41,10 +40,11 @@
 											<li class="active"><a href="index">Home</a></li>
 									        <li><a href="searchPage">Search</a></li>
 									        <li><a href="login">Login</a></li>
+									        <li><a href="createAccount">Create an Account</a></li>
 									    </ul>
 									</div>
 								</div>
-								
+							</nav>
 					</c:when>
 				</c:choose>
 					
@@ -53,27 +53,28 @@
 		<p> Description of website</p>
 	<div class="recent_reviews">
 		<h2>Recent Ted Talks Reviews</h2>
-		<c:if test="${sessionScope.results == false}">
-			<h2>Unable to Post</h2>
-		</c:if>
-		<c:if test="${sessionScope.results == true}">
-		<h1></h1>
 		<table>
 			<c:forEach items="${sessionScope.tedTalks}" var="talk">
 				<tr>
+					<p>
 					<td>Title: <c:out value="${talk.title}" /><td>
+					</p>
 				</tr>
 					<c:forEach items="${sessionScope.accounts}" var="account">
 						<c:forEach items="${sessionScope.reviews}" var="review">
 							<c:if test="${review.tedTalkId == talk.tedTalkId}">
 								<tr>
+									<p>
 									<td>Rating: <c:out value="${review.rating}" /></td>
+									</p>
 								</tr>
 							</c:if>
 							<c:if test="${review.accountId == account.accountId}">
 								<tr>
+									<p>
 									<td>Reviewer: <c:out value="${account.firstName}" /> <c:out
 											value="${account.lastName}" /></td>
+											</p>
 								</tr>
 								<tr>
 									<td><a href="searchPage">Search this Reviewer</a><td>
@@ -81,10 +82,9 @@
 							</c:if>
 						</c:forEach>
 					</c:forEach>
-			</c:forEach>
+				</c:forEach>
 			</table>
-		</c:if>
-		</form>
-	</body>
-	
+		</div>
+	</form>
+</body>
 </html>

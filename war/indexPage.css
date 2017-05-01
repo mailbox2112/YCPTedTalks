@@ -35,18 +35,15 @@ body{
 }
 
 input[type=submit]{
-	background-color: #E62B1E; 
-	color: black; 
-	border: 2px solid #E62B1E;
-	padding: 6px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
+	font-family: Helvetica Neue;
+	display: block;
+	color: black;
 	font-size: 16px;
-	margin: 4px 2px;
-	-webkit-transition-duration: 0.4s; /* for Safari */
-	transition-duration: 0.4s;
-	cursor: pointer;
+	text-align: right;
+	padding: 10px;
+	background-color: #E62B1E;
+	border-color: #E62B1E;
+	text-decoration: underline
 }
 
 input[type=submit]:hover{
@@ -70,7 +67,7 @@ li {
 li a {
 	font-family: Helvetica Neue;
 	display: block;
-	color: white;
+	color: black;
 	font-size: 16px;
 	text-align: center;
 	padding: 10px;
@@ -108,4 +105,5 @@ td{
 	text-transform: capitalize;
 	text-align: left;
 	padding: 8px;
+	border: 2px solid black;
 }
