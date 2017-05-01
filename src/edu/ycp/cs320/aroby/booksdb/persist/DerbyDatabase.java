@@ -563,7 +563,7 @@ public class DerbyDatabase implements IDatabase {
 	// TODO: Change it here and in SQLDemo under
 	// CS320_Lab06->edu.ycp.cs320.sqldemo
 	private Connection connect() throws SQLException {
-		Connection conn = DriverManager.getConnection("jdbc:derby: c:/CS 320/library.db;create=true");
+		Connection conn = DriverManager.getConnection("jdbc:derby: Users/chihealocke/CS 320/library.db;create=true");
 
 		// Set autocommit() to false to allow the execution of
 		// multiple queries/statements as part of the same transaction.

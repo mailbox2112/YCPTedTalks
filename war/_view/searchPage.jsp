@@ -35,7 +35,7 @@
 	<form action="${pageContext.servletContext.contextPath}/searchPage" method="post">
 	<h1>Search TEDTalks</h1>
 		<select name="options" id="Type">
-			<option value="author"> Search by Speaker</option>
+			<option value="author"> Search by Reviewer</option>
 			<option value="topic"> Search by Topic</option>
 			<option value="title">Search by Title</option>
 		</select>
