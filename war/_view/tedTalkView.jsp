@@ -8,15 +8,13 @@
 <link rel="stylesheet" href="tedTalkView.css">
 </head>
 <body>
-	<form id="tedTalkoutput" name="tedPage"
-		action="${pageContext.servletContext.contextPath}/tedTalkView"
-		method="post">
 		<c:if test="${sessionScope.login == true}">
 		<div class="header">
 			<ul>
-				<li><b class="navbar-brand" href="index">Ted Talk Reviews</b></li>
+				<li><b class="navbar-brand" href="index">TEDTalk Reviews</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
+				<li><a href="tedTalkPage">Begin New TedTalk</a></li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="about">About</a></li>
 			</ul>
@@ -25,7 +23,7 @@
 		<c:if test="${sessionScope.login != true}">
 		<div class="header">
 			<ul>
-				<li><b class="navbar-brand" href="index">Ted Talk Reviews</b></li>
+				<li><b class="navbar-brand" href="index">TEDTalk Reviews</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
 				<li><a href="accountCreation">Create Account</a></li>
@@ -34,6 +32,9 @@
 			</ul>
 		</div>
 		</c:if>
+	<form id="tedTalkoutput" name="tedPage"
+		action="${pageContext.servletContext.contextPath}/tedTalkView"
+		method="post">
 		<h2>
 			<c:out value="${sessionScope.talk.title}" />
 		</h2>
@@ -47,14 +48,16 @@
 		</c:if>
 		<iframe width="560" height="315" src="${talk.link}" frameborder="0"
 			allowfullscreen></iframe>
+			<br>
+			<br>
 		<table>
 			<tr>
-				<td>Description: <c:out value="${talk.description}" /></td>
+				<td><c:out value="${talk.description}" /></td>
 			</tr>
 			<c:if
 				test="${sessionScope.talk.topicId == sessionScope.topic.topicId}">
 				<tr>
-					<td>Related Topics: <c:out value="${sessionScope.topic.topic}" /></td>
+					<td>Related Topics: <b><c:out value="${sessionScope.topic.topic}" /></b></td>
 				</tr>
 				<tr>
 					<td />
@@ -62,12 +65,15 @@
 			</c:if>
 		</table>
 		<h2 id="reviews">Reviews</h2>
+		<div id="avg">
+			<p>Average Review Rating: 5</p>
+		</div>
 		<table>
 			<c:forEach items="${sessionScope.accounts}" var="account">
 				<c:forEach items="${sessionScope.reviews}" var="review">
 					<c:if test="${review.accountId == account.accountId}">
 						<tr>
-							<td>Rating: <c:out value="${review.rating}" /></td>
+							<td>Rating: <b><c:out value="${review.rating}" /></b></td>
 							<c:if test="${sessionScope.admin == true}">
 								<td><a href="tedTalkView?delid=${review.reviewId}">Delete
 										this review</a>
@@ -90,7 +96,10 @@
 				</c:forEach>
 			</c:forEach>
 		</table>
-		<input type="submit" name="reviewPage" value="Write A Review!"></>
+		<br>
+		<c:if test="${sessionScope.login == true}">
+			<input type="submit" name="reviewPage" value="Write A Review!"></>
+		</c:if>
 	</form>
 </body>
 </html>

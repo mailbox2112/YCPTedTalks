@@ -27,6 +27,7 @@
 		<li><b href="index">TEDTalk Reviews</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
+		<li><a href="tedTalkPage">Begin New TedTalk</a></li>
 		<li><a href="logout">Logout</a></li>
 		<li><a href="about">About</a></li> 
 	</ul>

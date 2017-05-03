@@ -2,9 +2,6 @@ package edu.ycp.cs320.aroby.model;
 
 import java.time.ZonedDateTime;
 import java.util.Comparator;
-
-
-
 public class ReviewComparator implements Comparator<Review> {
 
 	public int compare(Review obj, Review obj1){

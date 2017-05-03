@@ -24,7 +24,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<ul class="nav navbar-nav">
-								<li><b href="index">Ted Talk Reviews</b></li>
+								<li><b href="index">TEDTalk Reviews</b></li>
 								<li class="active"><a href="index">Home</a></li>
 								<li><a href="searchPage">Search</a></li>
 								<li><a href="tedTalkPage">Begin New TedTalk</a></li>
@@ -41,7 +41,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<ul class="nav navbar-nav">
-								<li><b class="navbar-brand" href="index">Ted Talk
+								<li><b class="navbar-brand" href="index">TEDTalk
 										Reviews</b></li>
 								<li class="active"><a href="index">Home</a></li>
 								<li><a href="searchPage">Search</a></li>
