@@ -11,7 +11,7 @@
 		<c:if test="${sessionScope.login == true}">
 		<div class="header">
 			<ul>
-				<li><b class="navbar-brand" href="index">TEDTalk Reviews</b></li>
+				<li><b class="navbar-brand" href="index">CICERO</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
 				<li><a href="tedTalkPage">Begin New TedTalk</a></li>
@@ -23,7 +23,7 @@
 		<c:if test="${sessionScope.login != true}">
 		<div class="header">
 			<ul>
-				<li><b class="navbar-brand" href="index">TEDTalk Reviews</b></li>
+				<li><b class="navbar-brand" href="index">CICERO</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
 				<li><a href="accountCreation">Create Account</a></li>
@@ -66,7 +66,7 @@
 		</table>
 		<h2 id="reviews">Reviews</h2>
 		<div id="avg">
-			<p>Average Review Rating: 5</p>
+			<p>Average Review Rating: <c:out value="${sessionScope.average}"/></p>
 		</div>
 		<table>
 			<c:forEach items="${sessionScope.accounts}" var="account">

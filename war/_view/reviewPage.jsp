@@ -10,7 +10,7 @@
 	<body>
 	<c:if test="${sessionScope.login == true}">
 		<ul>
-			<li><b class="navbar-brand" href="index">TEDTalk Reviews</b></li>
+			<li><b class="navbar-brand" href="index">CICERO</b></li>
 			<li class="active"><a href="index">Home</a></li>
 			<li><a href="searchPage">Search</a></li>
 			<li><a href="logout">Logout</a></li>
