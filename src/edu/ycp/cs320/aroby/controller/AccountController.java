@@ -1,10 +1,10 @@
 package edu.ycp.cs320.aroby.controller;
 
-import edu.ycp.cs320.aroby.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.aroby.booksdb.persist.DerbyDatabase;
-import edu.ycp.cs320.aroby.booksdb.persist.IDatabase;
 import edu.ycp.cs320.aroby.model.Account;
 import edu.ycp.cs320.aroby.model.Student;
+import edu.ycp.cs320.aroby.persist.DatabaseProvider;
+import edu.ycp.cs320.aroby.persist.DerbyDatabase;
+import edu.ycp.cs320.aroby.persist.IDatabase;
 
 public class AccountController {
 	private Account model;
@@ -41,5 +41,27 @@ public class AccountController {
 		}
 		
 		return success;
+	}
+	
+	public Account getAccountFromDb(int accountId) {
+		Account acc = db.findAccount(accountId);
+		return acc;
+	}
+	
+	public boolean changePassword(String newPassword) {
+		return db.changePassword(model.getAccountId(), newPassword);
+	}
+	
+	public boolean changeEmail(String newEmail) {
+		return db.changeEmail(model.getAccountId(), newEmail);
+	}
+	
+	public Student getStudentFromAccountInfo(Account account) {
+		return db.findStudent(account.getEmail());
+	}
+	
+	public boolean changeMajor(String major) {
+		Student student = getStudentFromAccountInfo(model);
+		return db.changeMajor(student.getStudentId(), major);
 	}
 }

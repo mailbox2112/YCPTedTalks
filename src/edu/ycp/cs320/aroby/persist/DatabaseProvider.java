@@ -1,4 +1,4 @@
-package edu.ycp.cs320.aroby.booksdb.persist;
+package edu.ycp.cs320.aroby.persist;
 
 public class DatabaseProvider {
 	private static IDatabase theInstance;

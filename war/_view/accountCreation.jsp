@@ -38,7 +38,7 @@
 				</tr>
 				<tr>
 					<td class="label">Re-enter Password:</td>
-					<td><input type="password" name="reenteredPassword" size="12" value="${model.password}" /></td>
+					<td><input type="password" name="reenteredPassword" size="12" /></td>
 				</tr>
 				<tr>
 					<td class="label">First Name:</td>
@@ -62,7 +62,7 @@
 				</tr>
 				<tr>
 					<td />
-					<td><input type="Submit" name="submit" value="Login"></td>
+					<td><input type="Submit" name="submit" value="Create Account"></td>
 				</tr>
 			</table>
 		</form>

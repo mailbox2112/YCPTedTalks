@@ -1,4 +1,4 @@
-package edu.ycp.cs320.aroby.booksdb.persist;
+package edu.ycp.cs320.aroby.persist;
 
 import java.io.BufferedReader;
 import java.io.Closeable;
@@ -13,7 +13,7 @@ public class ReadCSV implements Closeable {
 	private BufferedReader reader;
 	
 	public ReadCSV(String resourceName) throws IOException {
-		InputStream in = this.getClass().getClassLoader().getResourceAsStream("edu/ycp/cs320/aroby/booksdb/persist/res/" + resourceName);
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("edu/ycp/cs320/aroby/persist/res/" + resourceName);
 		
 		if (in == null) {
 			throw new IOException("Couldn't open " + resourceName);

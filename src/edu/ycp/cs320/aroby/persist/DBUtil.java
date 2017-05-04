@@ -1,4 +1,4 @@
-package edu.ycp.cs320.aroby.booksdb.persist;
+package edu.ycp.cs320.aroby.persist;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

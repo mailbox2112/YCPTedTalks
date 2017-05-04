@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.ycp.cs320.aroby.booksdb.persist.DerbyDatabase;
 import edu.ycp.cs320.aroby.controller.ReviewController;
 import edu.ycp.cs320.aroby.controller.SearchController;
 import edu.ycp.cs320.aroby.controller.TedTalkController;
@@ -24,6 +23,7 @@ import edu.ycp.cs320.aroby.model.Search;
 import edu.ycp.cs320.aroby.model.Speaker;
 import edu.ycp.cs320.aroby.model.TedTalk;
 import edu.ycp.cs320.aroby.model.Topic;
+import edu.ycp.cs320.aroby.persist.DerbyDatabase;
 
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

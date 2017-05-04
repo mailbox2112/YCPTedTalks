@@ -31,10 +31,18 @@
 			<attribute name="javadoc_location" value="http://db.apache.org/derby/docs/10.10/publishedapi/jdbc4/"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/Users/chihealocke/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5.jar"/>
 	<classpathentry kind="lib" path="/Users/chihealocke/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-test-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/chihealocke/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-tests.jar"/>
 	<classpathentry kind="lib" path="/Users/chihealocke/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-sources.jar"/>
 	<classpathentry kind="lib" path="/Users/chihealocke/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-javadoc.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Aaron/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aaron/git/YCPTedTalks/commons-lang3-3.5/commons-lang3-3.5/commons-lang3-3.5-test-sources.jar"/>
+>>>>>>> branch 'master' of https://github.com/mailbox2112/YCPTedTalks.git
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

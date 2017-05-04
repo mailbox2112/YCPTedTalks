@@ -1,9 +1,6 @@
 //come back to this later 
 
 package edu.ycp.cs320.aroby.controller;
-import edu.ycp.cs320.aroby.booksdb.persist.DatabaseProvider;
-import edu.ycp.cs320.aroby.booksdb.persist.DerbyDatabase;
-import edu.ycp.cs320.aroby.booksdb.persist.IDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +9,9 @@ import edu.ycp.cs320.aroby.model.Review;
 import edu.ycp.cs320.aroby.model.Speaker;
 import edu.ycp.cs320.aroby.model.TedTalk;
 import edu.ycp.cs320.aroby.model.Topic;
+import edu.ycp.cs320.aroby.persist.DatabaseProvider;
+import edu.ycp.cs320.aroby.persist.DerbyDatabase;
+import edu.ycp.cs320.aroby.persist.IDatabase;
 
 public class TedTalkController {
 

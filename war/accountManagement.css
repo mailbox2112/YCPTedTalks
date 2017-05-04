@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+body{
+	font-family: Helvetica Neue;
+	text-align: center;
+}
+
+h1{
+	font-family: Helvetica Neue;
+	font-size: 55px;
+	color: #E62B1E;
+	text-align: center;
+}
+
+table{
+	background-color:#E62B1E;
+	width: 350px;
+	border: 15px solid #E62B1E;
+	padding: 12px;
+	margin: 15px;
+	text-align: left;
+}
+
+form{
+	margin-left: 39%;
+}
+td{
+	color: white;
+}
+
+input[type=text]{
+	box-sizing: border-box;
+	border: 2px solid #E62B1E; /*official tedtalk color; make all red this color */
+ 	font-size: 16px;
+ }
+input[type=password]{
+	box-sizing: border-box;
+	border: 2px solid #E62B1E;
+ 	font-size: 16px;
+}
+		
+input[type=submit]{
+   	background-color: white; 
+    color: black; 
+    border: 2px solid #E62B1E;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* for Safari */
+    transition-duration: 0.4s;
+   	cursor: pointer;
+}
+
+input[type=submit]:hover{
+	background-color: #E62B1E;
+    color: white;
+}
+
+ul{
+    	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #E62B1E;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	font-family: Helvetica Neue;
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+	background-color: #E62B1E;
+}
+li b {
+	font-family: Helvetica;
+	display: block;
+	color: white;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+	background-color: #E62B1E;
+}
+li a:hover {
+	color: white;
+	background-color: #E62B1E;
+}
+p{
+	font-size: 20px;
+	text-align: center;
+}

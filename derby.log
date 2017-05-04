@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed May 03 11:34:08 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-015b-cef2-74b5-000004400298 
+on database directory /Users/chihealocke/git/YCPTedTalks/Users/chihealocke/CS 320/library.db with class loader sun.misc.Launcher$AppClassLoader@1b6d3586 
+Loaded from file:/Users/chihealocke/Downloads/CS320_Derby/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_60-b27
+user.dir=/Users/chihealocke/git/YCPTedTalks
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.10.5
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
