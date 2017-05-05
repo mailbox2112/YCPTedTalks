@@ -19,7 +19,7 @@
 		</c:if>
 		<div class="header">
 			<ul>
-				<li><b class="navbar-brand" href="index">Ted Talk Reviews</b></li>
+				<li><b class="navbar-brand" href="index">CICERO</b></li>
 				<li class="active"><a href="index">Home</a></li>
 				<li><a href="searchPage">Search</a></li>
 				<li><a href="accountCreation">Create Account</a></li>

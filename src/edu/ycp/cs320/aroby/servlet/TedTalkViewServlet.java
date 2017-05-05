@@ -64,9 +64,20 @@ public class TedTalkViewServlet extends HttpServlet {
 				session.setAttribute("speaker", spec);
 				session.setAttribute("accounts", accList);
 				
+				int sum= 0;
+				int avg = 0;
+				List<Review> findRating = (List<Review>) session.getAttribute("reviews");
+				
+				for(Review rev : findRating){
+					sum+=rev.getRating();
+				}
+				avg = sum/findRating.size();
+			
+				session.setAttribute("average", avg);
+				
 				req.getRequestDispatcher("/_view/tedTalkView.jsp").forward(req, resp);
 			}	
-		}		
+		}
 	}
 	
 	@Override

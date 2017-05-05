@@ -14,7 +14,7 @@
 	</c:if>
 	<c:if test="${sessionScope.login != true}">
 		<ul>
-		<li><b href="index">TEDTalk Reviews</b></li>
+		<li><b href="index">CICERO</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
 		<li><a href="accountCreation">Create Account</a></li>
@@ -24,9 +24,10 @@
 	</c:if>
 	<c:if test="${sessionScope.login == true}">
 	<ul>
-		<li><b href="index">TEDTalk Reviews</b></li>
+		<li><b href="index">CICERO</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
+		<li><a href="tedTalkPage">Begin New TedTalk</a></li>
 		<li><a href="logout">Logout</a></li>
 		<li><a href="about">About</a></li> 
 	</ul>
@@ -35,7 +36,7 @@
 	<form action="${pageContext.servletContext.contextPath}/searchPage" method="post">
 	<h1>Search TEDTalks</h1>
 		<select name="options" id="Type">
-			<option value="author"> Search by Speaker</option>
+			<option value="author"> Search by Reviewer</option>
 			<option value="topic"> Search by Topic</option>
 			<option value="title">Search by Title</option>
 		</select>

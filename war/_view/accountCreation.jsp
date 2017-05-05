@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	<ul>
-		<li><b href="index">Ted Talk Reviews</b></li>
+		<li><b href="index">CICERO</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
 		<li><a href="accountCreation">Create Account</a></li>

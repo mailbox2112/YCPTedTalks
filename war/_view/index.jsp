@@ -24,7 +24,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<ul class="nav navbar-nav">
-								<li><b href="index">Ted Talk Reviews</b></li>
+								<li><b href="index">CICERO</b></li>
 								<li class="active"><a href="index">Home</a></li>
 								<li><a href="searchPage">Search</a></li>
 								<li><a href="tedTalkPage">Begin New TedTalk</a></li>
@@ -42,8 +42,7 @@
 					<div class="container-fluid">
 						<div class="navbar-header">
 							<ul class="nav navbar-nav">
-								<li><b class="navbar-brand" href="index">Ted Talk
-										Reviews</b></li>
+								<li><b class="navbar-brand" href="index">CICERO</b></li>
 								<li class="active"><a href="index">Home</a></li>
 								<li><a href="searchPage">Search</a></li>
 								<li><a href="accountCreation">Create Account</a></li>
@@ -57,12 +56,12 @@
 		</c:choose>
 
 
-		<h1>TEDTalk Reviews</h1>
+		<h1>CICERO</h1>
 		<p>Opinions worth sharing</p>
 		<div class="recent_reviews">
-			<h2>Recent Ted Talks Reviews</h2>
-			<table>
+		<table>
 				<c:forEach items="${sessionScope.tedTalks}" var="talk">
+				<h2>Recent TEDTalk Reviews</h2>
 					<tr>
 						<td>Title: <c:out value="${talk.title}" />
 						<td>

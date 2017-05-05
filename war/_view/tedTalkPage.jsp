@@ -8,13 +8,26 @@
 <link rel="stylesheet" href="tedTalkPage.css">
 </head>
 <body>
-	<ul class="nav navbar-nav">
-		<li><b class="navbar-brand" href="index">Ted Talk Reviews</b></li>
+	<c:if test="${sessionScope.login != true}">
+		<ul>
+		<li><b href="index">CICERO</b></li>
 		<li class="active"><a href="index">Home</a></li>
 		<li><a href="searchPage">Search</a></li>
-		<li><a href="logout">Logout</a></li>
-		<li><a href="about">About</a></li>
+		<li><a href="accountCreation">Create Account</a></li>
+		<li><a href="login">Login</a></li>
+		<li><a href="about">About</a></li> 
 	</ul>
+	</c:if>
+	<c:if test="${sessionScope.login == true}">
+	<ul>
+		<li><b href="index">CICERO</b></li>
+		<li class="active"><a href="index">Home</a></li>
+		<li><a href="searchPage">Search</a></li>
+		<li><a href="tedTalkPage">Begin New TedTalk</a></li>
+		<li><a href="logout">Logout</a></li>
+		<li><a href="about">About</a></li> 
+	</ul>
+	</c:if>
 	<h1>Insert TEDTalk Page</h1>
 	<form id="tedForm" name="tedForm"
 		action="${pageContext.servletContext.contextPath}/tedTalkPage"
