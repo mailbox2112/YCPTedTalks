@@ -2,6 +2,7 @@ package edu.ycp.cs320.aroby.model;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -29,9 +30,9 @@ public class ReviewComparatorTest {
 		review1 = new Review();
 		review2 = new Review();
 		review3 = new Review();
-		review1.setDate(ZonedDateTime.of(2017, 8, 21, 7, 30, 1, 1, ZoneId.systemDefault()).toString());
-		review2.setDate(ZonedDateTime.of(2016, 9, 9, 11, 47, 13, 02, ZoneId.systemDefault()).toString());
-		review3.setDate(ZonedDateTime.now().toString());
+		review1.setDate(LocalDateTime.of(2017, 8, 21, 7, 30).toString());
+		review2.setDate(LocalDateTime.of(2016, 9, 9, 11, 47).toString());
+		review3.setDate(LocalDateTime.now().toString());
 		
 	}
 	@Test 
